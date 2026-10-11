@@ -1,3 +1,5 @@
+import { Shield, Zap, Network, Gem, Cpu, Orbit } from 'lucide-react'
+
 const characters = {
   captain: { name: 'CAPTAIN AMERICA', code: 'RESOLVE', mark: 'shield' },
   thor: { name: 'THOR', code: 'POWER', mark: 'bolt' },
@@ -25,20 +27,11 @@ function SpiderWeb() {
   </svg>
 }
 
-const glyphs = {
-  shield: CaptainShield,
-  web: SpiderWeb,
-} as const
+const fallbackIcons = { bolt: Zap, gem: Gem, cpu: Cpu, orbit: Orbit, shield: Shield, web: Network }
+const glyphs = { shield: CaptainShield, web: SpiderWeb } as const
 
 export function ChapterMark({ character }: { character: keyof typeof characters }) {
   const { name, code, mark } = characters[character]
   const Glyph = glyphs[mark as keyof typeof glyphs]
-  return <div className="chapter-mark"><span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : <DefaultGlyph mark={mark}/>}</span><span><small>{name}</small><strong>{code} / ASB-10</strong></span></div>
-}
-
-function DefaultGlyph({ mark }: { mark: string }) {
-  const { Shield, Zap, Network, Gem, Cpu, Orbit } = require('lucide-react')
-  const icons: Record<string, typeof Shield> = { bolt: Zap, gem: Gem, cpu: Cpu, orbit: Orbit }
-  const Icon = icons[mark] ?? Network
-  return <Icon strokeWidth={1.2}/>
+  return <div className="chapter-mark"><span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : (() => { const Icon = fallbackIcons[mark as keyof typeof fallbackIcons] ?? Network; return <Icon strokeWidth={1.2}/> })()}</span><span><small>{name}</small><strong>{code} / ASB-10</strong></span></div>
 }
