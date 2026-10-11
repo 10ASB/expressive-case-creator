@@ -36,7 +36,7 @@ export function CaseStudy({ slug }: { slug: string }) {
       const record = data as Record<string, unknown>
       const fields = ['name', 'tagline', 'category', 'year', 'image', 'role', 'duration', 'problem', 'research', 'solution', 'outcome'] as const
       if (fields.some(field => typeof record[field] !== 'string' || !record[field])) throw new Error('Invalid case study')
-      if (typeof record.image !== 'string' || !(/^(data:image\/(png|jpeg|webp|gif);base64,|https:\/\/|\/)/.test(record.image))) throw new Error('Invalid image')
+      if (typeof record['image'] !== 'string' || !(/^(data:image\/(png|jpeg|webp|gif);base64,|https:\/\/|\/)/.test(record['image']))) throw new Error('Invalid image')
       update({ ...project, ...Object.fromEntries(fields.map(field => [field, record[field]])), slug: project.slug } as Project)
       setImportError('')
     } catch { setImportError('Choose a valid downloaded case-study JSON file.') }
