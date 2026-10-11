@@ -1,0 +1,9 @@
+import { useQuery } from '@tanstack/react-query'
+import { Github, ArrowUpRight, GitCommitHorizontal, RefreshCw } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { getGithubActivity } from '@/lib/github.functions'
+import { identity } from '@/lib/identity'
+export function GithubActivity(){
+  const {data,isPending,isError,refetch}=useQuery({queryKey:['github','10ASB'],queryFn:()=>getGithubActivity(),staleTime:300000,retry:false})
+  return <section className="github-tool"><div className="tool-title"><span><Github size={17}/> GITHUB / 10ASB</span><Button variant="ghost" size="icon-sm" aria-label="Refresh GitHub activity" title="Refresh GitHub activity" disabled={isPending} onClick={()=>void refetch()}><RefreshCw size={14}/></Button></div>{isPending?<p className="telemetry-message">Establishing GitHub uplink…</p>:isError||!data?.ok?<p className="telemetry-message">{data&&!data.ok?data.message:'GitHub telemetry is temporarily unavailable.'}</p>:<><div className="github-stats"><div><strong>{data.repos}</strong><span>PUBLIC REPOS</span></div><div><strong>{data.stars}</strong><span>STARS</span></div><div><strong>{data.followers}</strong><span>FOLLOWERS</span></div></div><div className="github-events">{data.events.length?data.events.slice(0,3).map(e=><a href={`https://github.com/${e.repo}`} target="_blank" rel="noopener noreferrer" key={e.id}><GitCommitHorizontal size={16}/><span><b>{e.type}</b><small>{e.repo}</small></span><time>{e.date.slice(0,10)}</time></a>):<p>No recent public events.</p>}</div></>}<a href={identity.github} target="_blank" rel="noopener noreferrer" className="tool-bottom">VIEW PUBLIC PROFILE <ArrowUpRight size={14}/></a></section>
+}

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
+import { Route as ApiPublicJarvisRouteImport } from './routes/api.public.jarvis'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
   path: '/work/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicJarvisRoute = ApiPublicJarvisRouteImport.update({
+  id: '/api/public/jarvis',
+  path: '/api/public/jarvis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/api/public/jarvis': typeof ApiPublicJarvisRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/api/public/jarvis': typeof ApiPublicJarvisRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,20 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/api/public/jarvis': typeof ApiPublicJarvisRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/work/$slug'
+  fullPaths: '/' | '/about' | '/contact' | '/work/$slug' | '/api/public/jarvis'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/work/$slug'
-  id: '__root__' | '/' | '/about' | '/contact' | '/work/$slug'
+  to: '/' | '/about' | '/contact' | '/work/$slug' | '/api/public/jarvis'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/work/$slug'
+    | '/api/public/jarvis'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +82,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  ApiPublicJarvisRoute: typeof ApiPublicJarvisRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/jarvis': {
+      id: '/api/public/jarvis'
+      path: '/api/public/jarvis'
+      fullPath: '/api/public/jarvis'
+      preLoaderRoute: typeof ApiPublicJarvisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +130,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   WorkSlugRoute: WorkSlugRoute,
+  ApiPublicJarvisRoute: ApiPublicJarvisRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
