@@ -11,8 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as TerminalRouteImport } from './routes/terminal'
+import { Route as WorkIndexRouteImport } from './routes/work.index'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
+import { Route as ApiPublicJarvisRouteImport } from './routes/api.public.jarvis'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,9 +29,29 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerminalRoute = TerminalRouteImport.update({
+  id: '/terminal',
+  path: '/terminal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/work/',
+  path: '/work/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkSlugRoute = WorkSlugRouteImport.update({
@@ -34,39 +59,92 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
   path: '/work/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicJarvisRoute = ApiPublicJarvisRouteImport.update({
+  id: '/api/public/jarvis',
+  path: '/api/public/jarvis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assistant': typeof AssistantRoute
   '/contact': typeof ContactRoute
+  '/skills': typeof SkillsRoute
+  '/terminal': typeof TerminalRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/': typeof WorkIndexRoute
+  '/api/public/jarvis': typeof ApiPublicJarvisRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assistant': typeof AssistantRoute
   '/contact': typeof ContactRoute
+  '/skills': typeof SkillsRoute
+  '/terminal': typeof TerminalRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work': typeof WorkIndexRoute
+  '/api/public/jarvis': typeof ApiPublicJarvisRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assistant': typeof AssistantRoute
   '/contact': typeof ContactRoute
+  '/skills': typeof SkillsRoute
+  '/terminal': typeof TerminalRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/': typeof WorkIndexRoute
+  '/api/public/jarvis': typeof ApiPublicJarvisRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/work/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/assistant'
+    | '/contact'
+    | '/skills'
+    | '/terminal'
+    | '/work/$slug'
+    | '/work/'
+    | '/api/public/jarvis'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/work/$slug'
-  id: '__root__' | '/' | '/about' | '/contact' | '/work/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/assistant'
+    | '/contact'
+    | '/skills'
+    | '/terminal'
+    | '/work/$slug'
+    | '/work'
+    | '/api/public/jarvis'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/assistant'
+    | '/contact'
+    | '/skills'
+    | '/terminal'
+    | '/work/$slug'
+    | '/work/'
+    | '/api/public/jarvis'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AssistantRoute: typeof AssistantRoute
   ContactRoute: typeof ContactRoute
+  SkillsRoute: typeof SkillsRoute
+  TerminalRoute: typeof TerminalRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  WorkIndexRoute: typeof WorkIndexRoute
+  ApiPublicJarvisRoute: typeof ApiPublicJarvisRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,11 +163,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terminal': {
+      id: '/terminal'
+      path: '/terminal'
+      fullPath: '/terminal'
+      preLoaderRoute: typeof TerminalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/': {
+      id: '/work/'
+      path: '/work'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/$slug': {
@@ -99,14 +205,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/jarvis': {
+      id: '/api/public/jarvis'
+      path: '/api/public/jarvis'
+      fullPath: '/api/public/jarvis'
+      preLoaderRoute: typeof ApiPublicJarvisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AssistantRoute: AssistantRoute,
   ContactRoute: ContactRoute,
+  SkillsRoute: SkillsRoute,
+  TerminalRoute: TerminalRoute,
   WorkSlugRoute: WorkSlugRoute,
+  WorkIndexRoute: WorkIndexRoute,
+  ApiPublicJarvisRoute: ApiPublicJarvisRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

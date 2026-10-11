@@ -1,6 +1,6 @@
 export const identity = {
   name: 'Akshay S Bharadwaj',
-  email: 'a90361967@gmail.com',
+  email: 'akshaysbharadwaj1@gmail.com',
   linkedin: 'https://www.linkedin.com/in/akshay-s-bharadwaj-71979b311/',
   github: 'https://github.com/10ASB',
 }

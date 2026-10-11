@@ -1,0 +1,1 @@
+export function pageMeta(title:string,description:string){return {meta:[{title:`${title} — Akshay S Bharadwaj`},{name:'description',content:description},{property:'og:title',content:`${title} — Akshay S Bharadwaj`},{property:'og:description',content:description},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}}
