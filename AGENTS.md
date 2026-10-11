@@ -20,3 +20,4 @@
 - Use AI SDK UI-message streaming and AI Elements for the session-only assistant, with server-held prompts and secrets; persist access denials in a service-role-only circuit breaker rather than storing visitor conversations.
 - Fetch only the fixed public GitHub profile, repositories, and public activity without credentials, so live telemetry cannot expose private GitHub data.
 - Keep the dossier chapter pages as independent leaf routes and the gallery at work.index, so case-study URLs retain their existing paths.
+- Scope character chapter palettes through local semantic CSS variables and share chapter marks, so visual themes do not alter portfolio facts or leak into adjacent chapters.

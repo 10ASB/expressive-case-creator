@@ -565,3 +565,19 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .reactor-glow label {display:flex;align-items:center;gap:7px;}
 .reactor-glow output {margin-left:auto;min-width:35px;text-align:right;}
 @media(max-width:640px){.reactor-controls{right:auto;left:18px;bottom:52px;padding:8px;gap:10px;}.reactor-glow{width:130px;}.reactor-telemetry{top:665px;}}
+.chapter-captain {--primary:oklch(.76 .13 245);--primary-foreground:oklch(.15 .02 245);--character-detail:oklch(.7 .19 25);}
+.chapter-thor {--primary:oklch(.85 .14 85);--primary-foreground:oklch(.19 .03 85);--character-detail:oklch(.8 .12 220);}
+.chapter-spider {--primary:oklch(.72 .2 25);--primary-foreground:oklch(.15 .02 25);--character-detail:oklch(.73 .14 245);}
+.chapter-vision {--primary:oklch(.84 .14 155);--primary-foreground:oklch(.16 .03 155);--character-detail:oklch(.85 .13 85);}
+.chapter-panther {--primary:oklch(.78 .13 300);--primary-foreground:oklch(.17 .03 300);--character-detail:oklch(.85 .02 220);}
+.chapter-strange {--primary:oklch(.8 .15 55);--primary-foreground:oklch(.18 .03 55);--character-detail:oklch(.78 .13 160);}
+.chapter-mark {display:flex;align-items:center;gap:16px;margin-bottom:28px;color:var(--primary);font-family:var(--font-mono);}
+.chapter-sigil {display:grid;place-items:center;width:60px;height:60px;border:1px solid var(--primary);border-radius:50%;background:var(--card);box-shadow:0 0 20px color-mix(in oklch,var(--primary) 12%,transparent);position:relative;}
+.chapter-sigil::after {content:'';position:absolute;inset:5px;border:1px dashed var(--character-detail);border-radius:50%;opacity:.65;}
+.chapter-sigil svg {width:30px;height:30px;}
+.chapter-mark small {display:block;font-size:9px;line-height:1.8;}
+.chapter-mark strong {display:block;font-size:8px;font-weight:400;color:var(--muted-foreground);}
+.chapter-thor .charged,.chapter-spider .filter.active {background:var(--primary);}
+.chapter-vision .mini-reactor {border-color:var(--primary);box-shadow:0 0 14px color-mix(in oklch,var(--primary) 35%,transparent);}
+.chapter-panther .terminal-tool,.chapter-vision .jarvis-tool {border-color:color-mix(in oklch,var(--primary) 45%,var(--border));}
+@media(max-width:640px){.chapter-mark{margin-bottom:22px;gap:12px;}.chapter-sigil{width:48px;height:48px;}.chapter-sigil svg{width:24px;height:24px;}}
