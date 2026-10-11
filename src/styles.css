@@ -379,12 +379,12 @@ input[type=file] { font-size: 12px; }
 @media(max-width:1000px) { .future-hero h1 { font-size: 72px; } }
 @media(max-width:640px) {
  .site-header { height:78px; }
- .future-hero { min-height: 745px; padding-top: 25px; background-size: 45px 45px; }
+ .future-hero { min-height: 700px; padding-top: 25px; background-size: 45px 45px; }
  .future-hero h1 { font-size: 49px; }
  .hero-title { margin-top: 34px; }
  .hero-bottom { margin-top: 22px; }
  .hero-bottom p { max-width: 330px; }
- .hero-caption { padding-top: 280px; }
+ .hero-caption { padding-top: 260px; }
  .scene-pause { right:20px; bottom:65px; }
  .hero-topline p { max-width: 205px; }
  .hero-content .hero-topline { gap: 8px; }

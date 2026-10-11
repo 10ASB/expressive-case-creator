@@ -14,10 +14,10 @@ function Sculpture({ palette, paused }: { palette: Palette; paused: boolean }) {
     if (!group.current || !knot.current) return
     const dt = Math.min(rawDelta, .05)
     if (!paused) { elapsed.current += dt; knot.current.rotation.y += dt * .18; knot.current.rotation.z += dt * .09 }
-    group.current.position.lerp(new Vector3(size.width < 640 ? 0 : 2.5, size.width < 640 ? -1.2 : .1, 0), 1 - Math.exp(-4 * dt))
+    group.current.position.lerp(new Vector3(size.width < 640 ? 0 : 2.5, size.width < 640 ? -1.05 : .1, 0), 1 - Math.exp(-4 * dt))
     group.current.rotation.x += (pointer.y * .15 - group.current.rotation.x) * (1 - Math.exp(-3 * dt))
     group.current.rotation.y += (pointer.x * .2 - group.current.rotation.y) * (1 - Math.exp(-3 * dt))
-    group.current.scale.setScalar(size.width < 640 ? .85 : 1)
+    group.current.scale.setScalar(size.width < 640 ? .58 : 1)
   })
   return <group ref={group} position={[2.5,.1,0]} rotation={[.2,0,.2]}>
     <mesh ref={knot} rotation={[.35,.2,.2]}><torusKnotGeometry args={[1.25,.34,180,24,2,3]}/><meshPhysicalMaterial color={palette.metal} metalness={.95} roughness={.17} clearcoat={1}/></mesh>
