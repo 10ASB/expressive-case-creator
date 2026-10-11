@@ -23,10 +23,13 @@ export const Route = createFileRoute('/api/public/jarvis')({server:{handlers:{PO
   try{
     const call=createResponsesCall(request,{baseURL:'https://ai.gateway.lovable.dev/v1',apiKey:key,model:'openai/gpt-6-astra'},await convertToModelMessages(messages),prompt)
     const response=call.result.toUIMessageStreamResponse({originalMessages:messages,sendReasoning:true,onFinish:()=>{},onError:(error)=>error instanceof Error?error.message:'J.A.R.V.I.S. could not complete this request.'})
-    await call.result.response.catch(async(error:unknown)=>{
-      const e=error as {statusCode?:number;responseBody?:string;message?:string}
-      if(e.statusCode===403){const reason=e.responseBody||e.message||'AI access is blocked. Contact the portfolio owner.';await supabaseAdmin.from('ai_access_state').upsert({id:'jarvis',blocked:true,status:403,reason,updated_at:new Date().toISOString()})}
-    })
-    return response
+    const upstream = await call.firstResponse
+    if(upstream && !upstream.ok){
+      let reason='J.A.R.V.I.S. could not complete this request.'
+      try{const body=await upstream.json();reason=body.error?.message??body.message??reason}catch{reason=`J.A.R.V.I.S. is unavailable (${upstream.status}).`}
+      if(upstream.status===403){const {error}=await supabaseAdmin.from('ai_access_state').upsert({id:'jarvis',blocked:true,status:403,reason,updated_at:new Date().toISOString()});if(error)console.error('AI access block could not be persisted')}
+      return new Response(reason,{status:upstream.status})
+    }
+    return withLovableAiGatewayRunIdHeader(response,call.gateway)
   }catch(error){if(request.signal.aborted)return new Response('Stopped.',{status:499});return new Response(error instanceof Error?error.message:'J.A.R.V.I.S. is unavailable.',{status:500})}
 }}}})

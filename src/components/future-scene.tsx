@@ -8,7 +8,7 @@ import { Pause, Play } from 'lucide-react'
 type Palette = { metal: string; cyan: string; lime: string }
 function Sculpture({ palette, paused }: { palette: Palette; paused: boolean }) {
   const group = useRef<Group>(null)
-  const knot = useRef<Mesh>(null)
+  const knot = useRef<Group>(null)
   const elapsed = useRef(0)
   useFrame(({ pointer, size }, rawDelta) => {
     if (!group.current || !knot.current) return

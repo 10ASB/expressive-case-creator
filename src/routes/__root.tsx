@@ -91,6 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -119,7 +120,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <PortfolioProvider><Header /><Outlet /><Footer /></PortfolioProvider>
+      <PortfolioProvider><Header /><Outlet /><Footer /><Link to="/assistant" className="jarvis-launcher" aria-label="Open J.A.R.V.I.S. assistant"><span className="mini-reactor"/><span>J.A.R.V.I.S.</span><span className="signal-dot"/></Link></PortfolioProvider>
     </QueryClientProvider>
   );
 }
