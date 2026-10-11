@@ -1,0 +1,3 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { AboutPage } from '@/components/portfolio'
+export const Route = createFileRoute('/about')({ head: () => ({meta:[{title:'About — Akshay S.'},{name:'description',content:'Meet Akshay, a curious product and UI/UX designer combining thoughtful systems with expressive visual design.'},{property:'og:title',content:'The person behind the pixels — Akshay S.'},{property:'og:description',content:'Curious by nature. Designer by choice. Discover Akshay’s design approach.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}), component: AboutPage })
