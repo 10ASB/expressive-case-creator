@@ -15,4 +15,5 @@
 - [x] Replace the previous sculpture with Tony Stark-inspired 3D arc-reactor geometry and verify its animation.
 - [x] Add reactor rotation/glow controls, remove Stark wording, and renumber dossier chapters from 01.
 - [x] Remove the publication year and apply distinct Marvel character themes to the six chapters.
-- [x] Re-tune the reactor glow slider curve and remove the hero coordinates readout; publish.- [x] Animate the reactor play/pause button and the Captain America shield + Spider-Man web chapter marks, keeping Vision's colors unchanged.
+- [x] Re-tune the reactor glow slider curve and remove the hero coordinates readout; publish.
+- [x] Animate the reactor play/pause button and the Captain America shield + Spider-Man web chapter marks, keeping Vision's colors unchanged.
