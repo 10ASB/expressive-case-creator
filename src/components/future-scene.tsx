@@ -35,9 +35,9 @@ function Sculpture({ palette, paused }: { palette: Palette; paused: boolean }) {
     if (!group.current || !rotor.current) return
     const dt = Math.min(rawDelta, .05)
     const mobile = size.width < 640
-    target.set(mobile ? 0 : 2.7, mobile ? -1.65 : .15, 0)
+    target.set(mobile ? 0 : 2.7, mobile ? -.6 : .15, 0)
     group.current.position.lerp(target, 1 - Math.exp(-4 * dt))
-    group.current.scale.setScalar(mobile ? .64 : .94)
+    group.current.scale.setScalar(mobile ? .48 : .94)
     if (paused) return
     elapsed.current += dt
     rotor.current.rotation.z += dt * .16

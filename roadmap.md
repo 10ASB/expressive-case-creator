@@ -12,4 +12,4 @@
 - [ ] Add a session-only single-conversation AI assistant, simulated command terminal, and live public GitHub activity.
 - [ ] Verify navigation, assistant responses, terminal commands, links, and desktop/mobile layouts.
 - [ ] Confirm J.A.R.V.I.S. keeps one consistent Marvel-themed session and clears visitor messages after refresh.
-- [ ] Replace the previous sculpture with Tony Stark-inspired 3D arc-reactor geometry and verify its animation.
+- [x] Replace the previous sculpture with Tony Stark-inspired 3D arc-reactor geometry and verify its animation.
