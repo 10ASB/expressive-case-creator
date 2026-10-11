@@ -3,11 +3,13 @@ import { portfolioProjects } from '@/lib/projects'
 import { identity, contactMailto } from '@/lib/identity'
 
 describe('Real portfolio content', () => {
-  it('contains the three supplied real projects with public repository links', () => {
-    expect(portfolioProjects.map(p => p.slug)).toEqual(['delay-calculator', 'ai-chat-bot', 'systems-foundations'])
-    for (const project of portfolioProjects) expect(project.githubUrl).toMatch(/^https:\/\/github\.com\/10ASB\//)
+  it('contains five real projects and only the supplied repository links', () => {
+    expect(portfolioProjects.map(p => p.slug)).toEqual(['delay-calculator', 'ai-chat-bot', 'mysore-city-bus','quiz-building-application','systems-foundations'])
+    for (const project of portfolioProjects.filter(p=>p.githubUrl)) expect(project.githubUrl).toMatch(/^https:\/\/github\.com\/10ASB\//)
     expect(portfolioProjects[0]?.liveUrl).toBe('https://delayclac.netlify.app/')
-    expect(portfolioProjects[2]?.research).toBe('')
+    expect(portfolioProjects[4]?.research).toBe('')
+    expect(portfolioProjects[2]?.githubUrl).toBeUndefined()
+    expect(identity.email).toBe('akshaysbharadwaj1@gmail.com')
   })
   it('composes a correctly encoded email draft to Akshay', () => {
     const link = contactMailto('Jane & Co', 'jane@example.com', 'Hello & thank you!')
