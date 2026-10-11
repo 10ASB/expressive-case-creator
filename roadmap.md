@@ -11,3 +11,4 @@
 - [ ] Add five projects, education, internship, tiered skills, updated contact, and downloadable résumé.
 - [ ] Add a session-only single-conversation AI assistant, simulated command terminal, and live public GitHub activity.
 - [ ] Verify navigation, assistant responses, terminal commands, links, and desktop/mobile layouts.
+- [ ] Confirm J.A.R.V.I.S. keeps one consistent Marvel-themed session and clears visitor messages after refresh.
