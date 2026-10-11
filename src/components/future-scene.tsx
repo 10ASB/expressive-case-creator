@@ -16,6 +16,9 @@ function triangle(radius: number) {
   return shape
 }
 function Sculpture({ palette, paused, glow }: { palette: Palette; paused: boolean; glow: number }) {
+  // Remap the raw slider factor (0–2) so the reactor never goes fully dark
+  // and keeps gaining brightness across the whole slider range.
+  const g = .35 + .65 * glow
   const group = useRef<Group>(null)
   const rotor = useRef<Group>(null)
   const coreMaterial = useRef<MeshStandardMaterial>(null)
