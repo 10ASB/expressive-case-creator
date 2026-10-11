@@ -14,3 +14,4 @@
 - [ ] Confirm J.A.R.V.I.S. keeps one consistent Marvel-themed session and clears visitor messages after refresh.
 - [x] Replace the previous sculpture with Tony Stark-inspired 3D arc-reactor geometry and verify its animation.
 - [x] Add reactor rotation/glow controls, remove Stark wording, and renumber dossier chapters from 01.
+- [x] Remove the publication year and apply distinct Marvel character themes to the six chapters.
