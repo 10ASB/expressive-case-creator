@@ -12,3 +12,6 @@
 ## Portfolio architecture
 - Keep project templates in a typed shared data module and expose session edits through a shared React provider, so gallery and case-study views stay consistent without implying saved data.
 - Keep shareable work, about, contact, and case-study pages as individual TanStack routes with leaf metadata, so each page can be linked directly.
+- Keep contact identity in a shared module and compose contact messages as mailto drafts, so email links stay consistent without implying automatic delivery.
+- Derive project counts, categories, and next-project navigation from the shared project list; keep external actions outside the case-study card link to avoid nested anchors.
+- Lazy-load the R3F hero scene behind ClientOnly while keeping portfolio routes server-rendered; derive scene colors from CSS tokens and use local Lightformers to avoid external environment dependencies.
