@@ -7,3 +7,7 @@
 - [x] Verify updated projects and contact links.
 - [x] Change the portfolio to a futuristic technology aesthetic with animated 3D.
 - [x] Verify the animated scene and updated desktop/mobile layouts.
+- [ ] Transform the portfolio into a résumé-backed Stark / J.A.R.V.I.S. developer dossier with chapter navigation and an animated arc reactor.
+- [ ] Add five projects, education, internship, tiered skills, updated contact, and downloadable résumé.
+- [ ] Add a session-only single-conversation AI assistant, simulated command terminal, and live public GitHub activity.
+- [ ] Verify navigation, assistant responses, terminal commands, links, and desktop/mobile layouts.
