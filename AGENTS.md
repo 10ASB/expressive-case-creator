@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Portfolio architecture
+- Keep project templates in a typed shared data module and expose session edits through a shared React provider, so gallery and case-study views stay consistent without implying saved data.
+- Keep shareable work, about, contact, and case-study pages as individual TanStack routes with leaf metadata, so each page can be linked directly.
