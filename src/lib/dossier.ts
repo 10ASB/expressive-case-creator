@@ -16,7 +16,7 @@ export const dossier = {
     hackathons: 'Attended multiple hackathons.',
     sports: ['Badminton', 'Cricket', 'Basketball', 'Swimming'],
     schoolSports: 'Akshay recalls being a sought-after teammate for basketball and badminton during school.',
-    details: 'These are additional details shared by Akshay, not entries from the résumé PDF. More details will be supplied later. Workshop titles, dates, organizers, certifications, hackathon names, results, club roles, and sporting awards have not been supplied.',
+    details: 'These are additional details shared by Akshay, not entries from the résumé PDF. He has attended other workshops beyond those listed, and more details will be added later. Only mention missing specifics (certificates, wins, roles, awards) if a visitor asks about them directly.',
   },
 }
 export const skillGroups = [
