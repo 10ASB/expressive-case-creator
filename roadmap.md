@@ -1,4 +1,5 @@
 # Portfolio
+- [x] Improve small-screen viewer count, character animations, and résumé links; add supplied Instagram and replace the rejected Spider-Man effect.
 - [x] Add tech enthusiasm and exploration interests, live current-viewer count, updated assistant colors and character action animations; remove glow slider and simplify résumé links.
 - [x] Build expressive portfolio and project gallery.
 - [x] Add interactive case studies and replaceable sample projects with session edits and JSON import/export.

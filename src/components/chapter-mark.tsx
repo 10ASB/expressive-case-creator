@@ -31,8 +31,9 @@ const fallbackIcons = { bolt: Zap, gem: Gem, cpu: Cpu, orbit: Orbit, shield: Shi
 const glyphs = { shield: CaptainShield, web: SpiderWeb } as const
 
 function ChapterAction({ character }: { character: keyof typeof characters }) {
+  const webAngles = Array.from({ length: 8 }, (_, i) => i * Math.PI / 4)
   return <svg className={`chapter-action action-${character}`} viewBox="0 0 170 60" fill="none" stroke="currentColor" aria-hidden="true">
-    {character === 'spider' ? <><path className="web-shot" d="M4 43 Q55 10 150 15 M4 43 Q60 43 150 15 M4 43 Q80 58 150 15"/><path className="web-impact" d="M138 5 L158 25 M138 25 L158 5 M134 15 H162 M148 1 V29"/><path d="M1 45 L12 36 L22 39 L17 49 Z"/></> :
+    {character === 'spider' ? <><g className="web-hand"><path className="web-glove" d="M3 48 L17 33 L16 19 Q16 15 20 16 L24 29 L29 26 L40 11 Q44 9 45 13 L35 31 L42 26 Q47 24 48 28 L46 34 L32 44 L20 54 Z"/><path d="M13 38 L27 49 M20 32 L33 42 M23 29 L29 39 M29 26 L35 36"/></g><path className="web-shot" pathLength="1" d="M42 30 L135 30"/><g className="web-impact">{webAngles.map(a=><line key={a} x1="135" y1="30" x2={135+24*Math.cos(a)} y2={30+24*Math.sin(a)}/>)}{[8,16,24].map(r=><polygon key={r} points={webAngles.map(a=>`${135+r*Math.cos(a)},${30+r*Math.sin(a)}`).join(' ')}/>)}</g></> :
     character === 'captain' ? <g className="shield-throw"><circle cx="25" cy="30" r="17"/><circle cx="25" cy="30" r="12"/><path d="M25 21 L28 27 L34 28 L29 32 L30 38 L25 35 L20 38 L21 32 L16 28 L22 27 Z"/></g> :
     character === 'thor' ? <><path className="thunder-strike" d="M15 2 L42 18 L30 29 L74 37 L63 45 L153 57"/><path d="M8 9 H32 V24 H8 Z M20 24 V43"/></> :
     character === 'vision' ? <><path className="vision-beam" d="M10 30 H150 M10 30 L150 17 M10 30 L150 43"/><path d="M3 30 L10 22 L17 30 L10 38 Z"/></> :
@@ -44,5 +45,5 @@ function ChapterAction({ character }: { character: keyof typeof characters }) {
 export function ChapterMark({ character }: { character: keyof typeof characters }) {
   const { name, code, mark } = characters[character]
   const Glyph = glyphs[mark as keyof typeof glyphs]
-  return <div className="chapter-mark"><span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : (() => { const Icon = fallbackIcons[mark as keyof typeof fallbackIcons] ?? Network; return <Icon strokeWidth={1.2}/> })()}</span><span><small>{name}</small><strong>{code} / ASB-10</strong></span><ChapterAction character={character}/></div>
+  return <div className="chapter-mark"><span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : (() => { const Icon = fallbackIcons[mark as keyof typeof fallbackIcons] ?? Network; return <Icon strokeWidth={1.2}/> })()}</span><span className="chapter-identity"><small>{name}</small><strong>{code} / ASB-10</strong></span><ChapterAction character={character}/></div>
 }

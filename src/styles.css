@@ -605,16 +605,45 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .live-viewers strong {min-width:16px;text-align:center;color:var(--primary);font-size:15px;font-variant-numeric:tabular-nums;}
 .live-viewers .signal-dot {margin:0;}
 .chapter-action {flex-shrink:1;min-width:0;width:140px;height:60px;margin-left:auto;color:var(--character-detail);stroke-width:1.5;overflow:hidden;}
-.web-shot {stroke-dasharray:170;animation:web-fire 3.8s ease-out infinite;}
-.web-impact {transform-origin:148px 15px;animation:web-hit 3.8s ease-out infinite;}
+.action-spider {color:var(--foreground);stroke-width:1.7;}
+.web-glove {fill:var(--primary);stroke:var(--foreground);}
+.web-hand {transform-origin:30px 38px;animation:web-recoil 5s ease-out infinite;}
+.web-shot {stroke-dasharray:1;animation:web-launch 5s ease-out infinite;}
+.web-impact {transform-origin:135px 30px;animation:web-bloom 5s ease-out infinite;}
 .shield-throw {animation:shield-flight 5s ease-in-out infinite;transform-origin:25px 30px;}
 .thunder-strike {animation:thunder-flash 3.5s steps(1) infinite;}
 .vision-beam {stroke-dasharray:150;animation:web-fire 5s ease-out infinite;}
 .panther-slash {stroke-width:3;stroke-dasharray:60;animation:web-fire 4s ease-out infinite;}
 .portal-spin {transform-origin:75px 30px;animation:mark-rotate 12s linear infinite;}
 @keyframes web-fire {0%,12%{stroke-dashoffset:170;opacity:0;}25%,65%{stroke-dashoffset:0;opacity:1;}95%,100%{stroke-dashoffset:0;opacity:0;}}
-@keyframes web-hit {0%,24%{opacity:0;transform:scale(.2);}35%,65%{opacity:1;transform:scale(1);}95%,100%{opacity:0;transform:scale(1.2);}}
+@keyframes web-launch {0%,15%{stroke-dashoffset:1;opacity:0;}26%,70%{stroke-dashoffset:0;opacity:1;}90%,100%{stroke-dashoffset:0;opacity:0;}}
+@keyframes web-bloom {0%,25%{opacity:0;transform:scale(.15);}38%,72%{opacity:1;transform:scale(1);}92%,100%{opacity:0;transform:scale(1);}}
+@keyframes web-recoil {0%,16%,32%,100%{transform:rotate(0);}22%{transform:translateX(-3px) rotate(-8deg);}}
 @keyframes shield-flight {0%,100%{transform:translateX(0) rotate(0);}50%{transform:translateX(112px) rotate(360deg);}}
 @keyframes thunder-flash {0%,20%,24%,28%,75%,100%{opacity:.1;}21%,25%,29%,70%{opacity:1;}}
 @media(max-width:640px){.chapter-action{width:85px;height:48px;}.site-footer{flex-wrap:wrap;gap:20px;}.live-viewers{font-size:7px;}}
 @media(prefers-reduced-motion:reduce){.chapter-action *,.mark-shield *,.mark-web,.mark-web *,.reactor-controls .scene-pause::after,.reactor-controls .scene-pause svg,.jarvis-emblem{animation:none;}}
+
+@media(max-width:640px){
+  .site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;}
+  .site-header .wordmark{min-width:0;}.mobile-menu{flex-shrink:0;}
+  .hero-topline{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;}
+  .hero-topline p{min-width:0;}.availability{flex-shrink:0;}
+  .chapter-mark{display:grid;grid-template-columns:48px minmax(0,1fr) 112px;gap:10px;align-items:center;}
+  .chapter-identity{min-width:0;}.chapter-mark small{font-size:8px;}.chapter-mark strong{font-size:7px;}
+  .chapter-action{width:112px;height:52px;margin:0;stroke-width:2;}
+  .chapter-sigil{flex-shrink:0;}
+  .site-footer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 12px;align-items:center;padding-bottom:95px;}
+  .site-footer>.wordmark{grid-column:1;grid-row:1;min-width:0;}
+  .site-footer>.live-viewers{grid-column:2;grid-row:1;font-size:9px;gap:6px;min-height:44px;}
+  .live-viewers strong{font-size:18px;min-width:22px;}
+  .site-footer>.social-links{grid-column:1 / -1;grid-row:2;}
+  .site-footer>span{grid-column:1 / -1;grid-row:3;width:auto;order:initial;font-size:9px;}
+  .social-links,.site-footer .social-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px;font-size:12px;}
+  .social-links a{min-width:0;min-height:44px;}.social-links svg{flex-shrink:0;}
+  .hero-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;max-width:360px;width:100%;}
+  .hero-cta,.resume-cta{min-height:44px;height:44px;font-size:10px;}
+  .resume-cta{min-width:96px;color:var(--foreground);}
+  .dossier-layout a[href*="Resume.pdf"],.contact-layout a[href*="Resume.pdf"]{min-height:44px;min-width:120px;font-size:12px;}
+}
+@media(max-width:360px){.chapter-mark{grid-template-columns:44px minmax(0,1fr) 96px;gap:8px;}.chapter-sigil{width:44px;height:44px;}.chapter-action{width:96px;}.chapter-mark small{font-size:7px;}.hero-cta,.resume-cta{font-size:9px;}}

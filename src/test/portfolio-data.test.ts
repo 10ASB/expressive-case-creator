@@ -21,6 +21,7 @@ describe('Real portfolio content', () => {
     expect(portfolioProjects[4]?.research).toBe('')
     expect(portfolioProjects[2]?.githubUrl).toBeUndefined()
     expect(identity.email).toBe('akshaysbharadwaj1@gmail.com')
+    expect(identity.instagram).toBe('https://www.instagram.com/iixakshay/')
   })
   it('composes a correctly encoded email draft to Akshay', () => {
     const link = contactMailto('Jane & Co', 'jane@example.com', 'Hello & thank you!')

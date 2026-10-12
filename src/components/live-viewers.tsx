@@ -5,8 +5,14 @@ import { supabase } from '@/integrations/supabase/client'
 export function LiveViewers() {
   const [count, setCount] = useState<number | null>(null)
   useEffect(() => {
+    let key: string = crypto.randomUUID()
+    try {
+      const stored = sessionStorage.getItem('portfolio-presence-key')
+      if (stored) key = stored
+      else sessionStorage.setItem('portfolio-presence-key', key)
+    } catch { /* Presence still works when browser storage is disabled. */ }
     const channel = supabase.channel('portfolio-live-viewers', {
-      config: { presence: { key: crypto.randomUUID() } },
+      config: { presence: { key } },
     })
     channel.on('presence', { event: 'sync' }, () => {
       setCount(Object.keys(channel.presenceState()).length)
