@@ -3,7 +3,7 @@ export const resumeUrl = resume.url
 export const dossier = {
   title: 'AI & Machine Learning Undergraduate',
   location: 'Mysuru, Karnataka, India',
-  summary: 'Motivated AI & ML undergraduate with hands-on experience in software development, AI and IoT projects. Passionate about Python, problem-solving, and building practical applications.',
+  summary: 'Motivated AI & ML undergraduate with hands-on experience in software development, AI and IoT projects. A tech enthusiast who loves exploring new ideas and a wide range of interests. Passionate about Python, problem-solving, and building practical applications.',
   education: [
     {year:'2024 — 2028', name:'Mysore University School of Engineering', degree:'B.E. Artificial Intelligence & Machine Learning'},
     {year:'2024',name:'Sharada Vidya Mandir PU College',degree:'Pre-University Course'},

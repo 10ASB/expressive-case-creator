@@ -3,8 +3,7 @@ import { Environment, Lightformer } from '@react-three/drei'
 import { useRef, useState, useEffect, useMemo } from 'react'
 import { AdditiveBlending, Group, MeshStandardMaterial, Path, Shape, Vector3 } from 'three'
 import { Button } from '@/components/ui/button'
-import { Slider } from '@/components/ui/slider'
-import { Pause, Play, Sun } from 'lucide-react'
+import { Pause, Play } from 'lucide-react'
 
 type Palette = { metal: string; cyan: string; lime: string }
 function triangle(radius: number) {
@@ -15,10 +14,8 @@ function triangle(radius: number) {
   shape.closePath()
   return shape
 }
-function Sculpture({ palette, paused, glow }: { palette: Palette; paused: boolean; glow: number }) {
-  // Remap the raw slider factor (0–2) so the reactor never goes fully dark
-  // and keeps gaining brightness across the whole slider range.
-  const g = .35 + .65 * glow
+function Sculpture({ palette, paused }: { palette: Palette; paused: boolean }) {
+  const g = 1
   const group = useRef<Group>(null)
   const rotor = useRef<Group>(null)
   const coreMaterial = useRef<MeshStandardMaterial>(null)
@@ -78,7 +75,6 @@ function tokenColor(name: string) {
 export default function FutureScene() {
   const [palette, setPalette] = useState<Palette>()
   const [paused, setPaused] = useState(false)
-  const [glow, setGlow] = useState(100)
   useEffect(() => {
     setPalette({metal:tokenColor('--scene-metal'),cyan:tokenColor('--primary'),lime:tokenColor('--scene-highlight')})
     const query = matchMedia('(prefers-reduced-motion: reduce)'); setPaused(query.matches)
@@ -86,5 +82,5 @@ export default function FutureScene() {
     return () => query.removeEventListener('change',change)
   },[])
   if (!palette) return null
-  return <><div className="future-canvas" aria-label="Animated 3D arc reactor"><Canvas dpr={[1,1.5]} camera={{position:[0,0,8.5], fov:42}} gl={{alpha:true,antialias:true}}><ambientLight intensity={.65}/><directionalLight position={[3,5,5]} intensity={3}/><directionalLight position={[-4,0,2]} color={palette.cyan} intensity={2}/><Environment resolution={128}><Lightformer position={[0,5,3]} intensity={4} scale={[10,5,1]}/><Lightformer position={[-5,0,2]} rotation={[0,Math.PI/2,0]} color={palette.cyan} intensity={3} scale={[5,8,1]}/><Lightformer position={[4,1,3]} color={palette.lime} intensity={2} scale={[3,7,1]}/></Environment><Sculpture palette={palette} paused={paused} glow={glow/100}/></Canvas></div><div className="reactor-controls" aria-label="Reactor controls"><Button className={paused ? 'scene-pause is-paused' : 'scene-pause'} variant="outline" size="icon" aria-label={paused ? 'Resume reactor rotation' : 'Pause reactor rotation'} title={paused ? 'Resume reactor rotation' : 'Pause reactor rotation'} onClick={() => setPaused(!paused)}>{paused ? <Play key="play"/> : <Pause key="pause"/>}</Button><div className="reactor-glow"><label id="reactor-glow-label"><Sun size={13}/> GLOW <output>{glow}%</output></label><Slider aria-labelledby="reactor-glow-label" aria-label="Reactor glow intensity" min={0} max={200} step={10} value={[glow]} onValueChange={values=>setGlow(values[0] ?? 100)}/></div></div></>
+  return <><div className="future-canvas" aria-label="Animated 3D arc reactor"><Canvas dpr={[1,1.5]} camera={{position:[0,0,8.5], fov:42}} gl={{alpha:true,antialias:true}}><ambientLight intensity={.65}/><directionalLight position={[3,5,5]} intensity={3}/><directionalLight position={[-4,0,2]} color={palette.cyan} intensity={2}/><Environment resolution={128}><Lightformer position={[0,5,3]} intensity={4} scale={[10,5,1]}/><Lightformer position={[-5,0,2]} rotation={[0,Math.PI/2,0]} color={palette.cyan} intensity={3} scale={[5,8,1]}/><Lightformer position={[4,1,3]} color={palette.lime} intensity={2} scale={[3,7,1]}/></Environment><Sculpture palette={palette} paused={paused}/></Canvas></div><div className="reactor-controls" aria-label="Reactor controls"><Button className={paused ? 'scene-pause is-paused' : 'scene-pause'} variant="outline" size="icon" aria-label={paused ? 'Resume reactor rotation' : 'Pause reactor rotation'} title={paused ? 'Resume reactor rotation' : 'Pause reactor rotation'} onClick={() => setPaused(!paused)}>{paused ? <Play key="play"/> : <Pause key="pause"/>}</Button></div></>
 }

@@ -561,10 +561,7 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 @media(max-width:640px){.reactor-telemetry{top:690px;}}
 .reactor-controls {position:absolute;z-index:3;right:50px;bottom:28px;display:flex;align-items:center;gap:14px;background:var(--background);border:1px solid var(--border);border-radius:4px;padding:10px 12px;}
 .reactor-controls .scene-pause {position:static;width:32px;height:32px;}
-.reactor-glow {display:grid;gap:8px;width:145px;color:var(--primary);font-family:var(--font-mono);font-size:9px;}
-.reactor-glow label {display:flex;align-items:center;gap:7px;}
-.reactor-glow output {margin-left:auto;min-width:35px;text-align:right;}
-@media(max-width:640px){.reactor-controls{right:auto;left:18px;bottom:52px;padding:8px;gap:10px;}.reactor-glow{width:130px;}.reactor-telemetry{top:665px;}}
+@media(max-width:640px){.reactor-controls{right:auto;left:18px;bottom:52px;padding:8px;gap:10px;}.reactor-telemetry{top:665px;}}
 .chapter-captain {--primary:oklch(.76 .13 245);--primary-foreground:oklch(.15 .02 245);--character-detail:oklch(.7 .19 25);}
 .chapter-thor {--primary:oklch(.85 .14 85);--primary-foreground:oklch(.19 .03 85);--character-detail:oklch(.8 .12 220);}
 .chapter-spider {--primary:oklch(.72 .2 25);--primary-foreground:oklch(.15 .02 25);--character-detail:oklch(.73 .14 245);}
@@ -600,3 +597,24 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .reactor-controls .scene-pause svg { animation: icon-pop .32s ease; }
 @keyframes pause-ring { 0% { opacity: .7; transform: scale(.85); } 70% { opacity: 0; transform: scale(1.3); } 100% { opacity: 0; transform: scale(1.3); } }
 @keyframes icon-pop { from { transform: scale(.5); } to { transform: scale(1); } }
+
+/* Assistant accent is independent of Vision's green and gold. */
+.jarvis-tool {--primary:oklch(.8 .14 225);--primary-foreground:oklch(.16 .035 225);--ring:var(--primary);--reactor-glow:0 0 22px color-mix(in oklch,var(--primary) 35%,transparent);border-color:color-mix(in oklch,var(--primary) 45%,var(--border));}
+.jarvis-emblem {animation:mark-pulse 4s ease-in-out infinite;}
+.live-viewers {display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:8px;color:var(--muted-foreground);white-space:nowrap;}
+.live-viewers strong {min-width:16px;text-align:center;color:var(--primary);font-size:15px;font-variant-numeric:tabular-nums;}
+.live-viewers .signal-dot {margin:0;}
+.chapter-action {flex-shrink:1;min-width:0;width:140px;height:60px;margin-left:auto;color:var(--character-detail);stroke-width:1.5;overflow:hidden;}
+.web-shot {stroke-dasharray:170;animation:web-fire 3.8s ease-out infinite;}
+.web-impact {transform-origin:148px 15px;animation:web-hit 3.8s ease-out infinite;}
+.shield-throw {animation:shield-flight 5s ease-in-out infinite;transform-origin:25px 30px;}
+.thunder-strike {animation:thunder-flash 3.5s steps(1) infinite;}
+.vision-beam {stroke-dasharray:150;animation:web-fire 5s ease-out infinite;}
+.panther-slash {stroke-width:3;stroke-dasharray:60;animation:web-fire 4s ease-out infinite;}
+.portal-spin {transform-origin:75px 30px;animation:mark-rotate 12s linear infinite;}
+@keyframes web-fire {0%,12%{stroke-dashoffset:170;opacity:0;}25%,65%{stroke-dashoffset:0;opacity:1;}95%,100%{stroke-dashoffset:0;opacity:0;}}
+@keyframes web-hit {0%,24%{opacity:0;transform:scale(.2);}35%,65%{opacity:1;transform:scale(1);}95%,100%{opacity:0;transform:scale(1.2);}}
+@keyframes shield-flight {0%,100%{transform:translateX(0) rotate(0);}50%{transform:translateX(112px) rotate(360deg);}}
+@keyframes thunder-flash {0%,20%,24%,28%,75%,100%{opacity:.1;}21%,25%,29%,70%{opacity:1;}}
+@media(max-width:640px){.chapter-action{width:85px;height:48px;}.site-footer{flex-wrap:wrap;gap:20px;}.live-viewers{font-size:7px;}}
+@media(prefers-reduced-motion:reduce){.chapter-action *,.mark-shield *,.mark-web,.mark-web *,.reactor-controls .scene-pause::after,.reactor-controls .scene-pause svg,.jarvis-emblem{animation:none;}}
