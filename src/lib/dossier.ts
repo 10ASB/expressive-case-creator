@@ -14,8 +14,8 @@ export const dossier = {
     workshops: ['AWS', 'LinkedIn', 'Be10X'],
     club: "Member of his college's Synapse club.",
     hackathons: 'Attended multiple hackathons.',
-    sports: ['Badminton', 'Cricket', 'Basketball', 'Swimming'],
-    schoolSports: 'Akshay recalls being a sought-after teammate for basketball and badminton during school.',
+    sports: ['Badminton', 'Cricket', 'Basketball', 'Swimming', 'Hiking/Trekking'],
+    movies: 'Loves watching movies, especially Marvel films.',
     details: 'These are additional details shared by Akshay, not entries from the résumé PDF. He has attended other workshops beyond those listed, and more details will be added later. Only mention missing specifics (certificates, wins, roles, awards) if a visitor asks about them directly.',
   },
 }
