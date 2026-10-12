@@ -1,8 +1,17 @@
 import { describe, expect, it } from 'vitest'
 import { portfolioProjects } from '@/lib/projects'
 import { identity, contactMailto } from '@/lib/identity'
+import { dossier } from '@/lib/dossier'
 
 describe('Real portfolio content', () => {
+  it('includes Akshay’s supplied extracurricular background without invented achievements', () => {
+    expect(dossier.extracurriculars.workshops).toEqual(['AWS', 'LinkedIn', 'Be10X'])
+    expect(dossier.extracurriculars.club).toContain('Synapse')
+    expect(dossier.extracurriculars.hackathons).toBe('Attended multiple hackathons.')
+    expect(dossier.extracurriculars.sports).toEqual(['Badminton', 'Cricket', 'Basketball', 'Swimming'])
+    expect(dossier.extracurriculars.schoolSports).toContain('recalls')
+    expect(dossier.extracurriculars.details).toContain('not entries from the résumé PDF')
+  })
   it('contains five real projects and only the supplied repository links', () => {
     expect(portfolioProjects.map(p => p.slug)).toEqual(['delay-calculator', 'ai-chat-bot', 'mysore-city-bus','quiz-building-application','systems-foundations'])
     for (const project of portfolioProjects.filter(p=>p.githubUrl)) expect(project.githubUrl).toMatch(/^https:\/\/github\.com\/10ASB\//)
