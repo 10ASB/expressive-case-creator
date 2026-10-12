@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useRef, lazy, Suspense, type ReactNode } from 'react'
 import { Link, ClientOnly } from '@tanstack/react-router'
-import { Github, Mail, Linkedin, ArrowUpRight, ArrowRight, Menu, X, Plus, Download, Upload, Pencil, Check } from 'lucide-react'
+import { Github, Mail, Linkedin, Instagram, ArrowUpRight, ArrowRight, Menu, X, Plus, Download, Upload, Pencil, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
@@ -23,7 +23,7 @@ export function Header() {
   return <header className="site-header page-width"><Link to="/" className="wordmark" aria-label="Akshay S Bharadwaj home"><span className="mini-reactor"/>ASB<span className="brand-code">/ 10</span></Link><nav className={open ? 'main-nav is-open' : 'main-nav'} aria-label="Main navigation">{([{to:'/',label:'Protocol'},{to:'/about',label:'Dossier'},{to:'/skills',label:'Tech specs'},{to:'/work',label:'Deployments'},{to:'/assistant',label:'J.A.R.V.I.S.'},{to:'/terminal',label:'Terminal'},{to:'/contact',label:'Comms'}] as const).map(item=><Link to={item.to} key={item.to} activeOptions={{exact:true}} activeProps={{className:'nav-active'}} onClick={()=>setOpen(false)}>{item.label}</Link>)}</nav><Button variant="ghost" size="icon" className="mobile-menu" aria-label={open ? 'Close navigation' : 'Open navigation'} onClick={() => setOpen(!open)}>{open ? <X/> : <Menu/>}</Button></header>
 }
 function SocialLinks() {
-  return <div className="social-links"><a href={identity.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={15}/>LinkedIn <ArrowUpRight size={12}/></a><a href={identity.github} target="_blank" rel="noopener noreferrer"><Github size={15}/>GitHub <ArrowUpRight size={12}/></a><a href={`mailto:${identity.email}`}><Mail size={15}/>Email <ArrowUpRight size={12}/></a></div>
+  return <div className="social-links"><a href={identity.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={15}/>LinkedIn <ArrowUpRight size={12}/></a><a href={identity.github} target="_blank" rel="noopener noreferrer"><Github size={15}/>GitHub <ArrowUpRight size={12}/></a><a href={identity.instagram} target="_blank" rel="noopener noreferrer"><Instagram size={15}/>Instagram <ArrowUpRight size={12}/></a><a href={`mailto:${identity.email}`}><Mail size={15}/>Email <ArrowUpRight size={12}/></a></div>
 }
 function ProjectLinks({ project }: { project: Project }) {
   return <div className="project-links">{project.liveUrl && <Button asChild><a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live site <ArrowUpRight/></a></Button>}{project.githubUrl&&<Button asChild variant="outline"><a href={project.githubUrl} target="_blank" rel="noopener noreferrer"><Github/> GitHub <ArrowUpRight/></a></Button>}</div>
