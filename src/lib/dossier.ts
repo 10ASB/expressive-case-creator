@@ -10,6 +10,14 @@ export const dossier = {
     {year:'2022',name:'DAV Public School',degree:'Secondary School Leaving Certificate'},
   ],
   experience: {role:'Machine Learning Intern', company:'Bluemind Solution Pvt. Ltd.', period:'03 — 28 August 2026', location:'Mysuru', description:'Worked on Machine Learning and Computer Vision, focusing on visual defect detection and image-based quality inspection using deep learning and transfer learning.'},
+  extracurriculars: {
+    workshops: ['AWS', 'LinkedIn', 'Be10X'],
+    club: "Member of his college's Synapse club.",
+    hackathons: 'Attended multiple hackathons.',
+    sports: ['Badminton', 'Cricket', 'Basketball', 'Swimming'],
+    schoolSports: 'Akshay recalls being a sought-after teammate for basketball and badminton during school.',
+    details: 'These are additional details shared by Akshay, not entries from the résumé PDF. More details will be supplied later. Workshop titles, dates, organizers, certifications, hackathon names, results, club roles, and sporting awards have not been supplied.',
+  },
 }
 export const skillGroups = [
   {tier:'01',name:'Core systems',level:'PRIMARY STACK', skills:['Python','C/C++','NumPy','Pandas'],power:5},
