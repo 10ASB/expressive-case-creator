@@ -10,6 +10,8 @@ describe('Real portfolio content', () => {
     expect(dossier.extracurriculars.hackathons).toBe('Attended multiple hackathons.')
     expect(dossier.extracurriculars.sports).toEqual(['Badminton', 'Cricket', 'Basketball', 'Swimming', 'Hiking/Trekking'])
     expect(dossier.extracurriculars.movies).toContain('Marvel')
+    expect(dossier.summary).toContain('tech enthusiast')
+    expect(dossier.summary).toContain('loves exploring')
     expect(dossier.extracurriculars.details).toContain('not entries from the résumé PDF')
   })
   it('contains five real projects and only the supplied repository links', () => {
