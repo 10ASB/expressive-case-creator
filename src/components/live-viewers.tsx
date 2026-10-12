@@ -5,7 +5,7 @@ import { supabase } from '@/integrations/supabase/client'
 export function LiveViewers() {
   const [count, setCount] = useState<number | null>(null)
   useEffect(() => {
-    let key = crypto.randomUUID()
+    let key: string = crypto.randomUUID()
     try {
       const stored = sessionStorage.getItem('portfolio-presence-key')
       if (stored) key = stored
