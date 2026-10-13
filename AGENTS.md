@@ -23,3 +23,4 @@
 - Scope character chapter palettes through local semantic CSS variables and share chapter marks, so visual themes do not alter portfolio facts or leak into adjacent chapters.
 - Count currently connected browser tabs using anonymous Realtime Presence with a random per-tab session key retained across reloads and no visitor metadata; never present this as historical visits or unique people.
 - Scope assistant UI colors inside its tool independently of chapter palettes, so changing chat colors preserves Vision's character colors.
+- Strip devtools data-tsd-source attributes from R3F scene modules via the vite.config.ts post plugin, because R3F treats dashed props as nested paths and crashes.
