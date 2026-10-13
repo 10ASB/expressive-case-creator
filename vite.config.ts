@@ -15,7 +15,7 @@ const stripSourceFromR3F = {
     if (!/src\/components\/future-scene\.tsx/.test(id) || !code.includes("data-tsd-source")) return;
     return {
       code: code
-        .replace(/,?\s*"data-tsd-source":\s*"[^"]*"/g, "")
+        .replace(/"data-tsd-source":\s*"[^"]*",?/g, "")
         .replace(/\s*data-tsd-source="[^"]*"/g, ""),
       map: null,
     };
