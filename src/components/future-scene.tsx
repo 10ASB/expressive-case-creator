@@ -2,8 +2,6 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Lightformer } from '@react-three/drei'
 import { useRef, useState, useEffect, useMemo } from 'react'
 import { AdditiveBlending, Group, MeshStandardMaterial, Path, Shape, Vector3 } from 'three'
-import { Button } from '@/components/ui/button'
-import { Pause, Play } from 'lucide-react'
 
 type Palette = { metal: string; cyan: string; lime: string }
 function triangle(radius: number) {
@@ -82,5 +80,5 @@ export default function FutureScene() {
     return () => query.removeEventListener('change',change)
   },[])
   if (!palette) return null
-  return <><div className="future-canvas" aria-label="Animated 3D arc reactor"><Canvas dpr={[1,1.5]} camera={{position:[0,0,8.5], fov:42}} gl={{alpha:true,antialias:true}}><ambientLight intensity={.65}/><directionalLight position={[3,5,5]} intensity={3}/><directionalLight position={[-4,0,2]} color={palette.cyan} intensity={2}/><Environment resolution={128}><Lightformer position={[0,5,3]} intensity={4} scale={[10,5,1]}/><Lightformer position={[-5,0,2]} rotation={[0,Math.PI/2,0]} color={palette.cyan} intensity={3} scale={[5,8,1]}/><Lightformer position={[4,1,3]} color={palette.lime} intensity={2} scale={[3,7,1]}/></Environment><Sculpture palette={palette} paused={paused}/></Canvas></div><div className="reactor-controls" aria-label="Reactor controls"><Button className={paused ? 'scene-pause is-paused' : 'scene-pause'} variant="outline" size="icon" aria-label={paused ? 'Resume reactor rotation' : 'Pause reactor rotation'} title={paused ? 'Resume reactor rotation' : 'Pause reactor rotation'} onClick={() => setPaused(!paused)}>{paused ? <Play key="play"/> : <Pause key="pause"/>}</Button></div></>
+  return <div className="future-canvas" aria-label="Animated 3D arc reactor"><Canvas dpr={[1,1.5]} camera={{position:[0,0,8.5], fov:42}} gl={{alpha:true,antialias:true}}><ambientLight intensity={.65}/><directionalLight position={[3,5,5]} intensity={3}/><directionalLight position={[-4,0,2]} color={palette.cyan} intensity={2}/><Environment resolution={128}><Lightformer position={[0,5,3]} intensity={4} scale={[10,5,1]}/><Lightformer position={[-5,0,2]} rotation={[0,Math.PI/2,0]} color={palette.cyan} intensity={3} scale={[5,8,1]}/><Lightformer position={[4,1,3]} color={palette.lime} intensity={2} scale={[3,7,1]}/></Environment><Sculpture palette={palette} paused={paused}/></Canvas></div>
 }
