@@ -22,6 +22,9 @@ export const dossier = {
     hackathons: 'Attended multiple hackathons.',
     sports: ['Badminton', 'Cricket', 'Basketball', 'Swimming', 'Hiking/Trekking'],
     movies: 'Loves watching movies, especially Marvel films.',
+    creative: ['Photography', 'Video editing'],
+    creativeNote: 'He is into photography and video editing; visitors can see his work on Instagram.',
+    currentBuild: 'Currently building a voice-to-text application that supports 60+ languages (in progress; no public link yet).',
     details: 'These are additional details shared by Akshay, not entries from the résumé PDF. He has attended other workshops beyond those listed, and more details will be added later. Only mention missing specifics (certificates, wins, roles, awards) if a visitor asks about them directly.',
   },
 }

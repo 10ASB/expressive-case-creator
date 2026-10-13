@@ -40,9 +40,10 @@ function Sculpture({ palette, paused }: { palette: Palette; paused: boolean }) {
     if (coreMaterial.current) coreMaterial.current.emissiveIntensity = g * (2.2 + Math.sin(elapsed.current * 2) * .35)
     if (paused) return
     elapsed.current += dt
-    rotor.current.rotation.z += dt * .16
-    group.current.rotation.x += (pointer.y * .16 + Math.sin(elapsed.current * .45) * .09 - group.current.rotation.x) * (1 - Math.exp(-3 * dt))
-    group.current.rotation.y += (pointer.x * .24 + Math.sin(elapsed.current * .35) * .28 - group.current.rotation.y) * (1 - Math.exp(-3 * dt))
+    rotor.current.rotation.z -= dt * .35
+    const follow = 1 - Math.exp(-6 * dt)
+    group.current.rotation.x += (-pointer.y * .28 + Math.sin(elapsed.current * .6) * .025 - group.current.rotation.x) * follow
+    group.current.rotation.y += (pointer.x * .38 + Math.cos(elapsed.current * .5) * .03 - group.current.rotation.y) * follow
   })
   return <group ref={group} position={[2.7,.15,0]} rotation={[.08,-.12,0]}>
     <mesh position={[0,0,-.32]} rotation={[Math.PI/2,0,0]}><cylinderGeometry args={[1.93,1.82,.5,80]}/><meshStandardMaterial color={palette.metal} metalness={.95} roughness={.32}/></mesh>
