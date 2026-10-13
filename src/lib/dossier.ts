@@ -4,6 +4,12 @@ export const dossier = {
   title: 'AI & Machine Learning Undergraduate',
   location: 'Mysuru, Karnataka, India',
   summary: 'Motivated AI & ML undergraduate with hands-on experience in software development, AI and IoT projects. A tech enthusiast who loves exploring new ideas and a wide range of interests. Passionate about Python, problem-solving, and building practical applications.',
+  personal: {
+    favouriteFoods: ['Pizza', 'Paneer biryani', 'Ice cream'],
+    favouriteSubject: 'Maths',
+    lunchToday: 'Not supplied; favourite foods do not establish what he ate today.',
+    loverBoyReply: 'Why don’t you go on a date to know him better? 😉',
+  },
   education: [
     {year:'2024 — 2028', name:'Mysore University School of Engineering', degree:'B.E. Artificial Intelligence & Machine Learning'},
     {year:'2024',name:'Sharada Vidya Mandir PU College',degree:'Pre-University Course'},

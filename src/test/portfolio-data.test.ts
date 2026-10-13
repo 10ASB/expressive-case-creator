@@ -4,6 +4,12 @@ import { identity, contactMailto } from '@/lib/identity'
 import { dossier } from '@/lib/dossier'
 
 describe('Real portfolio content', () => {
+  it('includes supplied favourites without inventing today’s lunch or romantic status', () => {
+    expect(dossier.personal.favouriteFoods).toEqual(['Pizza', 'Paneer biryani', 'Ice cream'])
+    expect(dossier.personal.favouriteSubject).toBe('Maths')
+    expect(dossier.personal.lunchToday).toContain('Not supplied')
+    expect(dossier.personal.loverBoyReply).toContain('go on a date to know him better')
+  })
   it('includes Akshay’s supplied extracurricular background without invented achievements', () => {
     expect(dossier.extracurriculars.workshops).toEqual(['AWS', 'LinkedIn', 'Be10X'])
     expect(dossier.extracurriculars.club).toContain('Synapse')
