@@ -51,7 +51,7 @@ export function ChapterMark({ character }: { character: keyof typeof characters 
     const host = ref.current?.closest('section, main') ?? ref.current
     if (!host || typeof IntersectionObserver === 'undefined') return
     // Toggle on every entry so the character move replays each time it scrolls into view.
-    const io = new IntersectionObserver(([e]) => host.classList.toggle('is-engaged', e.isIntersecting), { threshold: 0.25 })
+    const io = new IntersectionObserver(([e]) => host.classList.toggle('is-engaged', !!e?.isIntersecting), { threshold: 0.25 })
     io.observe(host)
     return () => io.disconnect()
   }, [])
