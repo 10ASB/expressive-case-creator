@@ -1,6 +1,7 @@
 import delayImage from '@/assets/delay-detail.png.asset.json'
 import chatImage from '@/assets/chat-detail.png.asset.json'
 import systemsImage from '@/assets/systems-detail.png.asset.json'
+import voiceImage from '@/assets/voice-scribe.png.asset.json'
 
 export type Project = { slug: string; name: string; tagline: string; category: string; year: string; image: string; role: string; duration: string; problem: string; research: string; solution: string; outcome: string; githubUrl?: string; liveUrl?: string }
 export const portfolioProjects: Project[] = [
