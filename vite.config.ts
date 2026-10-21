@@ -12,7 +12,7 @@ const stripSourceFromR3F = {
   name: "strip-tsd-source-r3f",
   enforce: "post" as const,
   transform(code: string, id: string) {
-    if (!/src\/components\/future-scene\.tsx/.test(id) || !code.includes("data-tsd-source")) return;
+    if (!/src\/components\/(future-scene|cinematic-fx)\.tsx/.test(id) || !code.includes("data-tsd-source")) return;
     return {
       code: code
         .replace(/"data-tsd-source":\s*"[^"]*",?/g, "")

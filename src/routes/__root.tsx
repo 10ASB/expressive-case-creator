@@ -6,9 +6,11 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  ClientOnly,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
+const CinematicFx = lazy(() => import("@/components/cinematic-fx"));
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -120,7 +122,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <PortfolioProvider><Header /><Outlet /><Footer /><Link to="/assistant" className="jarvis-launcher" aria-label="Open J.A.R.V.I.S. assistant"><span className="mini-reactor"/><span>J.A.R.V.I.S.</span><span className="signal-dot"/></Link></PortfolioProvider>
+      <PortfolioProvider><ClientOnly fallback={null}><Suspense fallback={null}><CinematicFx/></Suspense></ClientOnly><Header /><Outlet /><Footer /><Link to="/assistant" className="jarvis-launcher" aria-label="Open J.A.R.V.I.S. assistant"><span className="mini-reactor"/><span>J.A.R.V.I.S.</span><span className="signal-dot"/></Link></PortfolioProvider>
     </QueryClientProvider>
   );
 }
