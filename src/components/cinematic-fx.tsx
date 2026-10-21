@@ -186,14 +186,18 @@ function Effect({ fx, onDone }: { fx: Fx; onDone: () => void }) {
 export default function CinematicFx() {
   const [fx, setFx] = useState<Fx | null>(null)
   const lastAt = useRef(0)
+  // Thor's move plays only once per visit; later scroll-backs are ignored.
+  const played = useRef(false)
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const on = (e: Event) => {
       const detail = (e as CustomEvent<Omit<Fx, 'id'>>).detail
       if (detail?.hero !== 'thor') return
+      if (played.current) return
       const now = performance.now()
       if (now - lastAt.current < 350) return
       lastAt.current = now
+      played.current = true
       setFx({ ...detail, id: now })
     }
     window.addEventListener('hero-fx', on)
