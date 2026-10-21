@@ -51,9 +51,18 @@ export function ChapterMark({ character }: { character: keyof typeof characters 
     const host = ref.current?.closest('section, main') ?? ref.current
     if (!host || typeof IntersectionObserver === 'undefined') return
     // Toggle on every entry so the character move replays each time it scrolls into view.
-    const io = new IntersectionObserver(([e]) => host.classList.toggle('is-engaged', !!e?.isIntersecting), { threshold: 0.25 })
+    let was = false
+    const io = new IntersectionObserver(([e]) => {
+      const now = !!e?.isIntersecting
+      host.classList.toggle('is-engaged', now)
+      if (now && !was) {
+        const css = getComputedStyle(host as HTMLElement)
+        window.dispatchEvent(new CustomEvent('hero-fx', { detail: { hero: character, primary: css.getPropertyValue('--primary').trim() || '#fff', detail: css.getPropertyValue('--character-detail').trim() || '#fff' } }))
+      }
+      was = now
+    }, { threshold: 0.35 })
     io.observe(host)
     return () => io.disconnect()
-  }, [])
-  return <div ref={ref} className="chapter-mark">{character === 'captain' && <span className="shield-flyby" aria-hidden="true"><CaptainShield/></span>}{character === 'spider' && <span className="web-pull" aria-hidden="true"/>}{character === 'strange' && <span className="portal-open" aria-hidden="true"><i/><i/><i/></span>}<span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : (() => { const Icon = fallbackIcons[mark as keyof typeof fallbackIcons] ?? Network; return <Icon strokeWidth={1.2}/> })()}</span><span className="chapter-identity"><small>{name}</small><strong>{code} / ASB-10</strong></span><ChapterAction character={character}/></div>
+  }, [character])
+  return <div ref={ref} className="chapter-mark"><span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : (() => { const Icon = fallbackIcons[mark as keyof typeof fallbackIcons] ?? Network; return <Icon strokeWidth={1.2}/> })()}</span><span className="chapter-identity"><small>{name}</small><strong>{code} / ASB-10</strong></span><ChapterAction character={character}/></div>
 }

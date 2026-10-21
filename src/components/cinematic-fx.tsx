@@ -1,6 +1,6 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AdditiveBlending, BufferAttribute, BufferGeometry, Color, DoubleSide, Group, LineBasicMaterial, Mesh, MeshBasicMaterial, Points, PointsMaterial, Shape } from 'three'
+import { AdditiveBlending, BufferAttribute, BufferGeometry, Color, DoubleSide, Group, LineBasicMaterial, Mesh, MeshBasicMaterial, Points, Shape } from 'three'
 
 export type Hero = 'captain' | 'thor' | 'spider' | 'vision' | 'panther' | 'strange'
 type Fx = { hero: Hero; primary: string; detail: string; id: number }
