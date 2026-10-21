@@ -31,6 +31,15 @@ function SpiderWeb() {
 const fallbackIcons = { bolt: Zap, gem: Gem, cpu: Cpu, orbit: Orbit, shield: Shield, web: Network }
 const glyphs = { shield: CaptainShield, web: SpiderWeb } as const
 
+// three.js cannot parse oklch(); resolve CSS colours to rgb through a 1px canvas.
+function toRgb(value: string) {
+  const c = document.createElement('canvas').getContext('2d')
+  if (!c || !value) return '#ffffff'
+  c.fillStyle = value; c.fillRect(0, 0, 1, 1)
+  const [r, g, b] = c.getImageData(0, 0, 1, 1).data
+  return `rgb(${r}, ${g}, ${b})`
+}
+
 function ChapterAction({ character }: { character: keyof typeof characters }) {
   const webAngles = Array.from({ length: 8 }, (_, i) => i * Math.PI / 4)
   return <svg className={`chapter-action action-${character}`} viewBox="0 0 170 60" fill="none" stroke="currentColor" aria-hidden="true">
@@ -57,10 +66,10 @@ export function ChapterMark({ character }: { character: keyof typeof characters 
       host.classList.toggle('is-engaged', now)
       if (now && !was) {
         const css = getComputedStyle(host as HTMLElement)
-        window.dispatchEvent(new CustomEvent('hero-fx', { detail: { hero: character, primary: css.getPropertyValue('--primary').trim() || '#fff', detail: css.getPropertyValue('--character-detail').trim() || '#fff' } }))
+        window.dispatchEvent(new CustomEvent('hero-fx', { detail: { hero: character, primary: toRgb(css.getPropertyValue('--primary').trim()), detail: toRgb(css.getPropertyValue('--character-detail').trim() || css.getPropertyValue('--primary').trim()) } }))
       }
       was = now
-    }, { threshold: 0.35 })
+    }, { rootMargin: '-40% 0px -40% 0px' })
     io.observe(host)
     return () => io.disconnect()
   }, [character])

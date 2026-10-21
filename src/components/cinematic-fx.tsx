@@ -69,16 +69,16 @@ function Captain({ t }: { t: React.MutableRefObject<number> }) {
     const k = Math.min(1, t.current / 2.2)
     const seg = Math.min(path.length - 2, Math.floor(k * (path.length - 1)))
     const local = k * (path.length - 1) - seg
-    const a = path[seg], b = path[seg + 1]
+    const a = path[seg]!, b = path[seg + 1]!
     g.current.position.set(a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local, a[2] + (b[2] - a[2]) * local)
     g.current.rotation.z -= .45
     g.current.rotation.x = Math.sin(t.current * 4) * .4
     const out = Math.max(0, t.current - 2.2) * 3
     g.current.scale.setScalar(1 + out)
   })
-  const ring = (r: number, color: string, z: number) => <mesh position={[0, 0, z]}><cylinderGeometry args={[r, r, .08, 64]}/><meshStandardMaterial color={color} metalness={.7} roughness={.3}/></mesh>
-  return <group ref={g}><group rotation={[Math.PI / 2, 0, 0]}>{ring(2, '#b3202a', 0)}{ring(1.6, '#e8e8ea', .02)}{ring(1.2, '#b3202a', .04)}{ring(.8, '#1d3c8c', .06)}</group>
-    <mesh position={[0, 0, .1]}><shapeGeometry args={[star]}/><meshStandardMaterial color="#f2f2f2" emissive="#ffffff" emissiveIntensity={.3} side={DoubleSide}/></mesh></group>
+  const ring = (r: number, color: string, z: number) => <mesh position={[0, 0, z]}><cylinderGeometry args={[r, r, .1, 64]}/><meshStandardMaterial color={color} metalness={.7} roughness={.3}/></mesh>
+  return <group ref={g}><group rotation={[Math.PI / 2, 0, 0]}>{ring(2, '#b3202a', 0)}{ring(1.6, '#e8e8ea', .12)}{ring(1.2, '#b3202a', .24)}{ring(.8, '#1d3c8c', .36)}</group>
+    <mesh position={[0, 0, .45]}><shapeGeometry args={[star]}/><meshStandardMaterial color="#f2f2f2" emissive="#ffffff" emissiveIntensity={.3} side={DoubleSide}/></mesh></group>
 }
 
 /* ---------- Spider-Man: thwip! web nets across the screen ---------- */
