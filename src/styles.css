@@ -641,18 +641,18 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .chapter-captain,.chapter-spider,.chapter-strange,.chapter-thor {overflow-x:clip;}
 .shield-flyby {position:absolute;left:0;top:-30px;width:110px;height:110px;color:var(--primary);opacity:0;pointer-events:none;z-index:2;filter:drop-shadow(0 0 18px color-mix(in oklch,var(--primary) 55%,transparent));}
 .shield-flyby svg {width:100%;height:100%;}
-.is-engaged .shield-flyby {animation:shield-flyover 1.8s cubic-bezier(.3,.1,.3,1) both;}
+/* removed: .is-engaged .shield-flyby {animation:shield-flyover 1.8s cubic-bezier(.3,.1,.3,1) both;} */
 @keyframes shield-flyover {0%{opacity:0;transform:translateX(-160px) rotate(0) scale(.6);}12%{opacity:1;}50%{transform:translateX(min(70vw,900px)) translateY(-20px) rotate(540deg) scale(1);opacity:1;}100%{opacity:0;transform:translateX(0) rotate(1080deg) scale(.4);}}
 .web-pull {position:absolute;left:30px;bottom:100%;width:2px;height:260px;background:linear-gradient(to top,var(--foreground),transparent);transform-origin:bottom;transform:scaleY(0);pointer-events:none;}
-.is-engaged .web-pull {animation:web-pull-line 1.6s ease-out both;}
-.is-engaged.chapter-spider .section-heading {animation:web-pull-down 1.6s cubic-bezier(.3,1.4,.5,1) both;}
+/* .is-engaged .web-pull {animation:web-pull-line 1.6s ease-out both;} */
+/* .is-engaged.chapter-spider .section-heading {animation:web-pull-down 1.6s cubic-bezier(.3,1.4,.5,1) both;} */
 @keyframes web-pull-line {0%{transform:scaleY(0);opacity:1;}30%{transform:scaleY(1);opacity:1;}70%{transform:scaleY(.25);opacity:1;}100%{transform:scaleY(.25);opacity:0;}}
 @keyframes web-pull-down {0%,30%{transform:translateY(-70px);opacity:.2;}75%{transform:translateY(6px);opacity:1;}100%{transform:translateY(0);}}
 .portal-open {position:absolute;left:30px;top:30px;width:0;height:0;pointer-events:none;}
 .portal-open i {position:absolute;left:-90px;top:-90px;width:180px;height:180px;border-radius:50%;border:2px dashed var(--primary);box-shadow:0 0 24px var(--primary),inset 0 0 24px var(--primary);opacity:0;}
 .portal-open i:nth-child(2){border-style:dotted;border-width:3px;animation-delay:.12s!important;}
 .portal-open i:nth-child(3){border-color:var(--character-detail);animation-delay:.24s!important;}
-.is-engaged .portal-open i {animation:portal-open 2.4s ease-out both;}
+/* .is-engaged .portal-open i {animation:portal-open 2.4s ease-out both;} */
 @keyframes portal-open {0%{transform:scale(0) rotate(0);opacity:0;}25%{opacity:1;}70%{transform:scale(1) rotate(300deg);opacity:.9;}100%{transform:scale(1.15) rotate(420deg);opacity:0;}}
 .asgard-pursuits {padding-block:70px;}
 .asgard-pursuits h2 {font-size:52px;line-height:1;margin-top:14px;}
@@ -678,3 +678,5 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .fx-strange::before {content:'';position:absolute;inset:0;background:radial-gradient(circle,transparent 30%,color-mix(in oklch,var(--background) 55%,transparent) 75%);}
 @keyframes fx-fade {0%{opacity:0;}6%,85%{opacity:1;}100%{opacity:0;}}
 .shield-flyby,.web-pull,.portal-open{display:none;}
+/* Only Thor animates: hide other characters' scroll animations */
+.shield-flyby,.web-pull,.portal-open{display:none !important;}
