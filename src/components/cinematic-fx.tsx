@@ -129,9 +129,9 @@ function Strange({ c, d, t }: { c: Color; d: Color; t: React.MutableRefObject<nu
     const k = t.current
     const open = Math.min(1, k / .9) * (k > 2.1 ? Math.max(0, 1 - (k - 2.1) * 2) : 1)
     const R = 4.2 * (1 - (1 - open) ** 3)
-    const arr = ring.geo.attributes.position.array as Float32Array
+    const pos = ring.geo.getAttribute('position'); const arr = pos.array as Float32Array
     for (let i = 0; i < ring.seed.length; i++) {
-      const s = ring.seed[i]
+      const s = ring.seed[i] ?? 0
       const a = s * Math.PI * 2 + k * 5
       const fly = (s * 37 + k * 2) % 1
       const r = R + (i % 4 === 0 ? fly * 2.4 : (Math.random() - .5) * .25)
@@ -139,7 +139,7 @@ function Strange({ c, d, t }: { c: Color; d: Color; t: React.MutableRefObject<nu
       arr[i * 3 + 1] = Math.sin(a) * r - (i % 4 === 0 ? fly * fly * 2 : 0)
       arr[i * 3 + 2] = (Math.random() - .5) * .3
     }
-    ring.geo.attributes.position.needsUpdate = true
+    pos.needsUpdate = true
     if (runes.current) { runes.current.rotation.z = -k * .8; runes.current.scale.setScalar(Math.max(.01, open)) }
   })
   return <><points ref={pts} geometry={ring.geo}><pointsMaterial color={c} size={.09} transparent blending={AdditiveBlending} depthWrite={false}/></points>
