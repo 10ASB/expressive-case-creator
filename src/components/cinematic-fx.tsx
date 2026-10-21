@@ -15,7 +15,12 @@ function bolt(from: [number, number], to: [number, number], jag: number) {
     const off = i === 0 || i === steps ? 0 : (Math.random() - .5) * jag
     pts.push(from[0] + (to[0] - from[0]) * t + off, from[1] + (to[1] - from[1]) * t + off * .3, (Math.random() - .5) * .5)
   }
-  return pts
+  // lineSegments draws pairs, so expand the polyline into connected segments (plus a forked branch).
+  const seg: number[] = []
+  for (let i = 0; i < pts.length - 3; i += 3) seg.push(...pts.slice(i, i + 6))
+  const m = Math.floor(steps / 2) * 3
+  seg.push(pts[m]!, pts[m + 1]!, pts[m + 2]!, pts[m]! + (Math.random() - .5) * 4, pts[m + 1]! - 2, 0)
+  return seg
 }
 function Thor({ c, d, t }: { c: Color; d: Color; t: React.MutableRefObject<number> }) {
   const lines = useRef<Group>(null)
