@@ -38,3 +38,10 @@ describe('Real portfolio content', () => {
     expect(params.get('body')).toContain('jane@example.com')
   })
 })
+import { dossier as d2 } from '@/lib/dossier'
+import { test as t2, expect as e2 } from 'vitest'
+t2('first internship completed and available for next', () => {
+  e2(d2.experience.status).toBe('Completed')
+  e2(d2.availability).toMatch(/available for his next internship/)
+  e2(d2.extracurriculars.creative).toContain('Singing')
+})
