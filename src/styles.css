@@ -671,3 +671,10 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .intel-preview.chapter-vision {--primary:oklch(.88 .17 95);--primary-foreground:oklch(.18 .04 95);--character-detail:oklch(.95 .1 100);}
 @media(max-width:640px){.asgard-pursuits h2{font-size:36px;}.shield-flyby{width:70px;height:70px;}.portal-open i{left:-60px;top:-60px;width:120px;height:120px;}}
 @media(prefers-reduced-motion:reduce){.is-engaged .shield-flyby,.is-engaged .web-pull,.is-engaged .portal-open i,.is-engaged .mjolnir,.is-engaged .mjolnir-bolt,.is-engaged .pursuit-list li,.is-engaged.chapter-spider .section-heading{animation:none;}}
+/* Full-screen cinematic hero moves (3D overlay, click-through). */
+.cinematic-fx {position:fixed;inset:0;z-index:60;pointer-events:none;animation:fx-fade 2.6s ease-out both;}
+.cinematic-fx canvas {pointer-events:none!important;}
+.fx-thor::before {content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,color-mix(in oklch,var(--primary) 18%,transparent),transparent 70%);animation:thunder-flash .9s steps(1) 3;}
+.fx-strange::before {content:'';position:absolute;inset:0;background:radial-gradient(circle,transparent 30%,color-mix(in oklch,var(--background) 55%,transparent) 75%);}
+@keyframes fx-fade {0%{opacity:0;}6%,85%{opacity:1;}100%{opacity:0;}}
+.shield-flyby,.web-pull,.portal-open{display:none;}
