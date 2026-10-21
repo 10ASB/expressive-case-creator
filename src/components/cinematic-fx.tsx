@@ -179,11 +179,6 @@ function Effect({ fx, onDone }: { fx: Fx; onDone: () => void }) {
   return <>
     <ambientLight intensity={.6}/><directionalLight position={[4, 6, 8]} intensity={2.5}/><pointLight position={[0, 0, 6]} intensity={30} color={c}/>
     {fx.hero === 'thor' && <Thor c={c} d={d} t={t}/>}
-    {fx.hero === 'captain' && <Captain t={t}/>}
-    {fx.hero === 'spider' && <Spider c={c} t={t}/>}
-    {fx.hero === 'strange' && <Strange c={c} d={d} t={t}/>}
-    {fx.hero === 'vision' && <Vision c={c} d={d} t={t}/>}
-    {fx.hero === 'panther' && <Panther c={c} t={t}/>}
   </>
 }
 
