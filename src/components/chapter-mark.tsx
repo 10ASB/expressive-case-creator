@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Shield, Zap, Network, Gem, Cpu, Orbit } from 'lucide-react'
 
 const characters = {
@@ -45,5 +46,14 @@ function ChapterAction({ character }: { character: keyof typeof characters }) {
 export function ChapterMark({ character }: { character: keyof typeof characters }) {
   const { name, code, mark } = characters[character]
   const Glyph = glyphs[mark as keyof typeof glyphs]
-  return <div className="chapter-mark"><span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : (() => { const Icon = fallbackIcons[mark as keyof typeof fallbackIcons] ?? Network; return <Icon strokeWidth={1.2}/> })()}</span><span className="chapter-identity"><small>{name}</small><strong>{code} / ASB-10</strong></span><ChapterAction character={character}/></div>
+  const ref = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const host = ref.current?.closest('section, main') ?? ref.current
+    if (!host || typeof IntersectionObserver === 'undefined') return
+    // Toggle on every entry so the character move replays each time it scrolls into view.
+    const io = new IntersectionObserver(([e]) => host.classList.toggle('is-engaged', e.isIntersecting), { threshold: 0.25 })
+    io.observe(host)
+    return () => io.disconnect()
+  }, [])
+  return <div ref={ref} className="chapter-mark">{character === 'captain' && <span className="shield-flyby" aria-hidden="true"><CaptainShield/></span>}{character === 'spider' && <span className="web-pull" aria-hidden="true"/>}{character === 'strange' && <span className="portal-open" aria-hidden="true"><i/><i/><i/></span>}<span className="chapter-sigil" aria-hidden="true">{Glyph ? <Glyph/> : (() => { const Icon = fallbackIcons[mark as keyof typeof fallbackIcons] ?? Network; return <Icon strokeWidth={1.2}/> })()}</span><span className="chapter-identity"><small>{name}</small><strong>{code} / ASB-10</strong></span><ChapterAction character={character}/></div>
 }
