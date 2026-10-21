@@ -190,6 +190,7 @@ export default function CinematicFx() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const on = (e: Event) => {
       const detail = (e as CustomEvent<Omit<Fx, 'id'>>).detail
+      if (detail?.hero !== 'thor') return
       const now = performance.now()
       if (now - lastAt.current < 350) return
       lastAt.current = now
