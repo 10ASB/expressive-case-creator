@@ -106,7 +106,7 @@ function Spider({ c, t }: { c: Color; t: React.MutableRefObject<number> }) {
       net.current.scale.setScalar(.05 + open * (1 - open) * .6 + open)
       net.current.rotation.z = k * .15
       // pull the web down and away at the end
-      net.current.position.y = k > 1.8 ? -(k - 1.8) ** 2 * 18 : 0
+      net.current.position.y = k > 1.8 ? -((k - 1.8) ** 2) * 18 : 0
     }
     if (mat.current) mat.current.opacity = k > 2.2 ? Math.max(0, 1 - (k - 2.2) * 3) : 1
   })
