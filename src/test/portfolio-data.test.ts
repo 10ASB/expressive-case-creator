@@ -21,7 +21,7 @@ describe('Real portfolio content', () => {
     expect(dossier.extracurriculars.details).toContain('not entries from the résumé PDF')
   })
   it('contains five real projects and only the supplied repository links', () => {
-    expect(portfolioProjects.map(p => p.slug)).toEqual(['delay-calculator', 'ai-chat-bot', 'mysore-city-bus','quiz-building-application','systems-foundations'])
+    expect(portfolioProjects.map(p => p.slug)).toEqual(['delay-calculator', 'ai-chat-bot', 'mysore-city-bus','speak-easy-global','quiz-building-application','systems-foundations'])
     for (const project of portfolioProjects.filter(p=>p.githubUrl)) expect(project.githubUrl).toMatch(/^https:\/\/github\.com\/10ASB\//)
     expect(portfolioProjects[0]?.liveUrl).toBe('https://delayclac.netlify.app/')
     expect(portfolioProjects[4]?.research).toBe('')
