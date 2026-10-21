@@ -161,7 +161,7 @@ function Vision({ c, d, t }: { c: Color; d: Color; t: React.MutableRefObject<num
     if (beam.current) { const on = k < .5 ? 0 : k < 2.2 ? Math.min(1, (k - .5) * 4) : Math.max(0, 1 - (k - 2.2) * 3); beam.current.scale.set(Math.max(.001, on * (1 + Math.random() * .3)), 1, Math.max(.001, on)) }
   })
   return <><mesh ref={gem} position={[-5, 0, 0]}><octahedronGeometry args={[1, 0]}/><meshStandardMaterial color={c} emissive={c} emissiveIntensity={2} metalness={.3} roughness={.1}/></mesh>
-    <mesh ref={beam} position={[5, 0, 0]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[.35, .35, 20, 24, 1, true]}/><meshBasicMaterial color={d} transparent opacity={.85} blending={AdditiveBlending}/></mesh></>
+    <mesh ref={beam} position={[5, 0, 0]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[.14, .14, 20, 24, 1, true]}/><meshBasicMaterial color={d} transparent opacity={.85} blending={AdditiveBlending}/></mesh></>
 }
 
 /* ---------- Black Panther: kinetic energy shockwave ---------- */
