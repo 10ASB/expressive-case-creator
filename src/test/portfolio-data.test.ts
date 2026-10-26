@@ -45,3 +45,11 @@ t2('first internship completed and available for next', () => {
   e2(d2.availability).toMatch(/available for his next internship/)
   e2(d2.extracurriculars.creative).toContain('Singing')
 })
+t2('BE10X certificate uses supplied details without a credential ID', () => {
+  const a = d2.achievements[0]!
+  e2(a.title).toBe('BE10X — AI Tools & Claude Workshop')
+  e2(a.issuer).toBe('BE10X')
+  e2(a.issued).toBe('October 25, 2026')
+  e2(a.skills).toHaveLength(3)
+  e2(JSON.stringify(a)).not.toMatch(/credential|verify/i)
+})

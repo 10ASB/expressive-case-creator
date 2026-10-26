@@ -29,6 +29,21 @@ export const dossier = {
     currentBuild: 'Currently building a voice-to-text application that supports 60+ languages (in progress; no public link yet).',
     details: 'These are additional details shared by Akshay, not entries from the résumé PDF. He has attended other workshops beyond those listed, and more details will be added later. Only mention missing specifics (certificates, wins, roles, awards) if a visitor asks about them directly.',
   },
+  achievements: [
+    {
+      title: 'BE10X — AI Tools & Claude Workshop',
+      issuer: 'BE10X',
+      recipient: 'Akshay S Bharadwaj',
+      issued: 'October 25, 2026',
+      issuedIso: '2026-10-25',
+      note: 'Certificate of successful completion.',
+      skills: [
+        'Create presentations using AI in under 5 minutes',
+        'Analyse data using AI in under 30 minutes',
+        'Code and debug using AI in under 10 minutes',
+      ],
+    },
+  ],
 }
 export const skillGroups = [
   {tier:'01',name:'Core systems',level:'PRIMARY STACK', skills:['Python','C/C++','NumPy','Pandas'],power:5},
