@@ -2,6 +2,7 @@ import delayImage from '@/assets/delay-detail.png.asset.json'
 import chatImage from '@/assets/chat-detail.png.asset.json'
 import systemsImage from '@/assets/systems-detail.png.asset.json'
 import voiceImage from '@/assets/voice-scribe.png.asset.json'
+import ittigeImage from '@/assets/ittige-concept.jpg'
 
 export type Project = { slug: string; name: string; tagline: string; category: string; year: string; image: string; role: string; duration: string; problem: string; research: string; solution: string; outcome: string; githubUrl?: string; liveUrl?: string }
 export const portfolioProjects: Project[] = [
@@ -33,6 +34,14 @@ export const portfolioProjects: Project[] = [
   },
   {
     slug:'quiz-building-application',name:'Quiz Building Application',tagline:'Interactive tests with built-in timers and automatic score tracking.',category:'Web development',year:'',image:'/project-quiz.svg',role:'',duration:'',problem:'Test-taking needs clear time limits and consistent score tracking.',research:'',solution:'A responsive web-based quiz platform featuring a built-in timer and automatic score tracking.',outcome:'An interactive and fair test-taking experience described in Akshay’s résumé.',
+  },
+  {
+    slug:'ittige',name:'Ittige — Turning Mysuru’s plastic waste into bricks',tagline:'Proposed social enterprise concept: plastic packaging film + sand → pavers and solid blocks for non-structural uses.',category:'Social Entrepreneurship · Sustainability',year:'',image:ittigeImage,
+    role:'Student team member · business concept & presentation contributor',duration:'Proposed concept — not launched',
+    problem:'Low-value plastic packaging film in Mysuru is rarely recycled and ends up as waste. Ittige is a social and environmental mission: give that plastic a second life in a circular economy.',
+    research:'The business plan is a set of assumptions to validate. In the base-case model, conventional clay bricks currently look cheaper, so pricing, costs and demand still need to be proven.',
+    solution:'Collect low-value plastic film and combine it with sand to make pavers and solid blocks for non-structural uses, subject to lab testing and regulatory approvals. The business model pairs waste collection with block sales, starting pilot-first.',
+    outcome:'A proposed concept only — not tested, certified, launched or commercially proven. Next steps: material strength, heat, fume and leaching tests, permits, and customer validation through a small pilot.',
   },
   {
     slug: 'systems-foundations', name: 'Systems & Algorithmic Foundations',
