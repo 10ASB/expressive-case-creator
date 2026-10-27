@@ -31,10 +31,10 @@ export const dossier = {
   },
   achievements: [
     {
-      title: 'BE10X — AI Tools & Claude Workshop',
+      title: 'AI Tools & Claude Workshop',
       issuer: 'BE10X',
       recipient: 'Akshay S Bharadwaj',
-      issued: 'October 25, 2026',
+      issued: '25 October 2026',
       issuedIso: '2026-10-25',
       note: 'Certificate of successful completion.',
       skills: [
