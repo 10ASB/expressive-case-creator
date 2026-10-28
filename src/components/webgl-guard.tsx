@@ -13,10 +13,10 @@ function canUseWebGL(): boolean {
 }
 
 class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
-  state = { failed: false }
+  override state = { failed: false }
   static getDerivedStateFromError() { return { failed: true } }
-  componentDidCatch(e: unknown) { console.warn('3D scene disabled:', e) }
-  render() { return this.state.failed ? null : this.props.children }
+  override componentDidCatch(e: unknown) { console.warn('3D scene disabled:', e) }
+  override render() { return this.state.failed ? null : this.props.children }
 }
 
 /** Renders 3D children only when WebGL works; otherwise renders nothing instead of crashing the page. */
