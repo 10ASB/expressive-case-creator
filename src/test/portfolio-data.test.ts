@@ -17,6 +17,7 @@ describe('Real portfolio content', () => {
     expect(dossier.extracurriculars.club).toContain('Synapse')
     expect(dossier.extracurriculars.hackathons).toBe('Attended multiple hackathons.')
     expect(dossier.extracurriculars.sports).toEqual(['Badminton', 'Cricket', 'Basketball', 'Swimming', 'Hiking/Trekking'])
+    expect(dossier.extracurriculars.pursuits).toEqual(['Fitness', 'Composing music', 'Gaming (COD, Garena, and many more)', 'Artist — multiple creative artworks made at home'])
     expect(dossier.extracurriculars.movies).toContain('Marvel')
     expect(dossier.summary).toContain('tech enthusiast')
     expect(dossier.summary).toContain('loves exploring')
