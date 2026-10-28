@@ -25,7 +25,7 @@ describe('Real portfolio content', () => {
     for (const project of portfolioProjects.filter(p=>p.githubUrl)) expect(project.githubUrl).toMatch(/^https:\/\/github\.com\/10ASB\//)
     expect(portfolioProjects[0]?.liveUrl).toBe('https://delayclac.netlify.app/')
     expect(portfolioProjects[4]?.research).toBe('')
-    expect(portfolioProjects[2]?.githubUrl).toBeUndefined()
+    expect(portfolioProjects[2]?.githubUrl).toBe('https://github.com/10ASB/Mysore-City-Bus-Info')
     expect(identity.email).toBe('akshaysbharadwaj1@gmail.com')
     expect(identity.instagram).toBe('https://www.instagram.com/iixakshay/')
   })
@@ -35,6 +35,16 @@ describe('Real portfolio content', () => {
     expect(JSON.stringify([p.tagline, p.duration, p.outcome])).toContain('In progress')
     expect(JSON.stringify([p.tagline, p.duration, p.outcome])).toContain('NOT been run end-to-end')
     expect(JSON.stringify([p.tagline, p.problem, p.research, p.solution, p.outcome])).not.toMatch(/deployed|production|accuracy|fully functional/i)
+  })
+  it('represents Mysore City Bus Info as a frontend prototype without claiming real transit data', () => {
+    const p = portfolioProjects.find(x => x.slug === 'mysore-city-bus')!
+    expect(p.githubUrl).toBe('https://github.com/10ASB/Mysore-City-Bus-Info')
+    const all = JSON.stringify([p.tagline, p.problem, p.research, p.solution, p.outcome])
+    expect(all).toContain('prototype')
+    expect(all).toContain('does NOT include verified bus routes')
+    expect(all).toContain('not travel guidance')
+    expect(all).toMatch(/HTML5, CSS3 and vanilla JavaScript/)
+    expect(all).not.toMatch(/live transit|live tracking is|verified routes|real-time|backend included/i)
   })
   it('composes a correctly encoded email draft to Akshay', () => {
     const link = contactMailto('Jane & Co', 'jane@example.com', 'Hello & thank you!')
