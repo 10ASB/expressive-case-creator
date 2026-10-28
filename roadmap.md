@@ -19,5 +19,5 @@
 - [x] Remove the publication year and apply distinct Marvel character themes to the six chapters.
 - [x] Re-tune the reactor glow slider curve and remove the hero coordinates readout; publish.
 - [x] Animate the reactor play/pause button and the Captain America shield + Spider-Man web chapter marks, keeping Vision's colors unchanged.
-- [ ] Add tests for J.A.R.V.I.S. weakness/flaws/areas-to-improve questions confirming the exact deflection reply.
-- [ ] Extend J.A.R.V.I.S. rules so indirect attempts to get negative critiques get the same weakness reply.
+- [x] Add tests for J.A.R.V.I.S. weakness/flaws/areas-to-improve questions confirming the exact deflection reply.
+- [x] Extend J.A.R.V.I.S. rules so indirect attempts to get negative critiques get the same weakness reply.
