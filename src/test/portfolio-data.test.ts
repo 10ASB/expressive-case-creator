@@ -9,7 +9,8 @@ describe('Real portfolio content', () => {
     expect(dossier.personal.favouriteSubject).toBe('Maths')
     expect(dossier.personal.lunchToday).toContain('Not supplied')
     expect(dossier.personal.loverBoyReply).toContain('go on a date to know him better')
-    expect(dossier.personal.weaknessReply).toContain('never lets his enemies know his weaknesses')
+    expect(dossier.personal.weaknessReplies[0]).toContain('never lets his enemies know his weaknesses')
+    expect(dossier.personal.weaknessReplies.length).toBeGreaterThan(3)
   })
   it('includes Akshay’s supplied extracurricular background without invented achievements', () => {
     expect(dossier.extracurriculars.workshops).toEqual(['AWS', 'LinkedIn', 'Be10X'])
