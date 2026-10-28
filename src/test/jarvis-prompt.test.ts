@@ -51,3 +51,13 @@ describe('J.A.R.V.I.S. weakness deflection', () => {
     expect(prompt).toContain('Never produce a list of development areas, cons, or honest criticisms')
   })
 })
+
+describe('J.A.R.V.I.S. pursuit facts (Thor chapter)', () => {
+  it('mentions fitness, composing music, gaming, and at-home artwork in the system prompt', () => {
+    const prompt = buildJarvisPrompt()
+    expect(prompt).toContain('keeps up with fitness')
+    expect(prompt).toContain('composes music')
+    expect(prompt).toContain('games on COD, Garena and many more')
+    expect(prompt).toContain('multiple creative artworks at home')
+  })
+})

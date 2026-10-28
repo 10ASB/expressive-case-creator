@@ -30,6 +30,7 @@ export const dossier = {
     club: "Member of his college's Synapse club.",
     hackathons: 'Attended multiple hackathons.',
     sports: ['Badminton', 'Cricket', 'Basketball', 'Swimming', 'Hiking/Trekking'],
+    pursuits: ['Fitness', 'Composing music', 'Gaming (COD, Garena, and many more)', 'Artist — multiple creative artworks made at home'],
     movies: 'Loves watching movies, especially Marvel films.',
     creative: ['Photography', 'Video editing', 'Singing'],
     singing: 'Junior-level singer in Sangeetha (music).',
