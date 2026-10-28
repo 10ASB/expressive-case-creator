@@ -2,9 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { convertToModelMessages, validateUIMessages } from 'ai'
 import { createResponsesCall } from '@/lib/ai/responses'
 import { withLovableAiGatewayRunIdHeader } from '@/lib/ai/run-id'
-import { dossier, skillGroups } from '@/lib/dossier'
-import { identity } from '@/lib/identity'
-import { portfolioProjects } from '@/lib/projects'
+import { buildJarvisPrompt } from '@/lib/jarvis-prompt'
 
 export const Route = createFileRoute('/api/public/jarvis')({server:{handlers:{POST:async({request})=>{
   const origin=request.headers.get('origin')
