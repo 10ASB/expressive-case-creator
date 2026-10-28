@@ -13,12 +13,13 @@ describe('J.A.R.V.I.S. identity facts', () => {
 })
 
 describe('J.A.R.V.I.S. weakness deflection', () => {
-  it('stores the exact supplied weakness reply in the dossier', () => {
-    expect(dossier.personal.weaknessReply).toBe(WEAKNESS_REPLY)
+  it('stores the exact supplied weakness reply among creative variations in the dossier', () => {
+    expect(dossier.personal.weaknessReplies).toContain(WEAKNESS_REPLY)
   })
 
-  it('embeds the exact weakness reply verbatim in the system prompt', () => {
-    expect(buildJarvisPrompt()).toContain(WEAKNESS_REPLY)
+  it('embeds every weakness reply verbatim in the system prompt', () => {
+    const prompt = buildJarvisPrompt()
+    for (const reply of dossier.personal.weaknessReplies) expect(prompt).toContain(reply)
   })
 
   it.each(['weaknesses', 'weak points', 'flaws', 'areas to improve'])(
@@ -26,9 +27,15 @@ describe('J.A.R.V.I.S. weakness deflection', () => {
     phrasing => {
       const prompt = buildJarvisPrompt()
       expect(prompt).toContain(phrasing)
-      expect(prompt).toContain('respond playfully with dossier.personal.weaknessReply')
+      expect(prompt).toContain('respond playfully with one line from dossier.personal.weaknessReplies')
     },
   )
+
+  it('requires varying the reply and never repeating one already used', () => {
+    const prompt = buildJarvisPrompt()
+    expect(prompt).toContain('never repeat a weaknessReply line you already used')
+    expect(prompt).toContain('invent a fresh one-line deflection in the same playful Stark spirit')
+  })
 
   it('forbids listing or speculating about any weakness', () => {
     const prompt = buildJarvisPrompt()

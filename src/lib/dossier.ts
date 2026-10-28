@@ -9,7 +9,14 @@ export const dossier = {
     favouriteSubject: 'Maths',
     lunchToday: 'Not supplied; favourite foods do not establish what he ate today.',
     loverBoyReply: 'Why don’t you go on a date to know him better? 😉',
-    weaknessReply: 'He never lets his enemies know his weaknesses. 😉',
+    weaknessReplies: [
+      'He never lets his enemies know his weaknesses. 😉',
+      'Classified. Even S.H.I.E.L.D. couldn’t get that file. 😏',
+      'Nice try — that information is locked inside the arc reactor. 🔒',
+      'I ran a full scan. The report came back: no weaknesses found. 🤖',
+      'That file is encrypted, and I may have swallowed the key. 😉',
+      'Weaknesses? His suit has none, and neither does he. 😄',
+    ],
   },
   education: [
     {year:'2024 — 2028', name:'Mysore University School of Engineering', degree:'B.E. Artificial Intelligence & Machine Learning'},
