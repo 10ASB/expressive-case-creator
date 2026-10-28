@@ -111,6 +111,6 @@ t2('LinkedIn event entry stays concise: participation only, no personal or compa
   e2(JSON.stringify(ev)).not.toMatch(/Akshay|Bluemind|202\d|speaker|organis|MCBI|bag|photo|booklet/i)
   const { buildJarvisPrompt } = await import('@/lib/jarvis-prompt')
   const prompt = buildJarvisPrompt()
-  e2(prompt).toContain("attended 'Sales Connect on Tour — Mysore'")
+  e2(prompt).toContain("participated in 'Sales Connect on Tour — Mysore'")
   e2(prompt).not.toMatch(/booklet|bag/i)
 })
