@@ -21,13 +21,20 @@ describe('Real portfolio content', () => {
     expect(dossier.extracurriculars.details).toContain('not entries from the résumé PDF')
   })
   it('contains five real projects and only the supplied repository links', () => {
-    expect(portfolioProjects.map(p => p.slug)).toEqual(['delay-calculator', 'ai-chat-bot', 'mysore-city-bus','speak-easy-global','quiz-building-application','ittige','systems-foundations'])
+    expect(portfolioProjects.map(p => p.slug)).toEqual(['delay-calculator', 'ai-chat-bot', 'mysore-city-bus','speak-easy-global','quiz-building-application','delivery-delay-prediction','ittige','systems-foundations'])
     for (const project of portfolioProjects.filter(p=>p.githubUrl)) expect(project.githubUrl).toMatch(/^https:\/\/github\.com\/10ASB\//)
     expect(portfolioProjects[0]?.liveUrl).toBe('https://delayclac.netlify.app/')
     expect(portfolioProjects[4]?.research).toBe('')
     expect(portfolioProjects[2]?.githubUrl).toBeUndefined()
     expect(identity.email).toBe('akshaysbharadwaj1@gmail.com')
     expect(identity.instagram).toBe('https://www.instagram.com/iixakshay/')
+  })
+  it('labels the delivery-delay mini-project as a prototype without overclaiming', () => {
+    const p = portfolioProjects.find(x => x.slug === 'delivery-delay-prediction')!
+    expect(p.githubUrl).toBe('https://github.com/10ASB/mini-project-1-build-polish-present')
+    expect(JSON.stringify([p.tagline, p.duration, p.outcome])).toContain('In progress')
+    expect(JSON.stringify([p.tagline, p.duration, p.outcome])).toContain('NOT been run end-to-end')
+    expect(JSON.stringify([p.tagline, p.problem, p.research, p.solution, p.outcome])).not.toMatch(/deployed|production|accuracy|fully functional/i)
   })
   it('composes a correctly encoded email draft to Akshay', () => {
     const link = contactMailto('Jane & Co', 'jane@example.com', 'Hello & thank you!')
