@@ -60,4 +60,11 @@ describe('J.A.R.V.I.S. pursuit facts (Thor chapter)', () => {
     expect(prompt).toContain('games on COD, Garena and many more')
     expect(prompt).toContain('multiple creative artworks at home')
   })
+  it('knows the user-provided College Brand Ambassador role and keeps it unembellished', () => {
+    const prompt = buildJarvisPrompt()
+    expect(prompt).toContain('College Brand Ambassador for Mysore University School of Engineering for academic year 2025–2026')
+    expect(prompt).toContain('come directly from Akshay himself')
+    expect(prompt).toMatch(/campus involvement, college roles, or ambassador work/)
+    expect(prompt).not.toMatch(/ambassador[^.]*\b(selected|appointed|duties|responsibilities)\b/i)
+  })
 })
