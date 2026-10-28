@@ -36,6 +36,14 @@ export const portfolioProjects: Project[] = [
     slug:'quiz-building-application',name:'Quiz Building Application',tagline:'Interactive tests with built-in timers and automatic score tracking.',category:'Web development',year:'',image:'/project-quiz.svg',role:'',duration:'',problem:'Test-taking needs clear time limits and consistent score tracking.',research:'',solution:'A responsive web-based quiz platform featuring a built-in timer and automatic score tracking.',outcome:'An interactive and fair test-taking experience described in Akshay’s résumé.',
   },
   {
+    slug:'delivery-delay-prediction',name:'Delivery Delay Prediction',tagline:'Internship mini-project: ML pipeline predicting whether a delivery will be delayed.',category:'Machine learning',year:'2026',image:'/project-delivery.svg',role:'Internship mini-project',duration:'In progress',
+    problem:'Delivery teams need to know before dispatch whether an order is likely to arrive late, so they can plan around it.',
+    research:'Working from the shared internship dataset: exploratory analysis and preprocessing of numeric and categorical features (customer city, product category, weight, discount, courier partner, promised delivery days, warehouse zone, payment mode) before training candidate classifiers.',
+    solution:'A Streamlit interface for entering delivery details and a FastAPI prediction API; the workflow trains and evaluates candidate classifiers, saves the chosen model as models/best_model.pkl, and serves predictions.',
+    outcome:'Prototype in progress — the full files and paths are not all committed yet, and the application has NOT been run end-to-end from this repository.',
+    githubUrl:'https://github.com/10ASB/mini-project-1-build-polish-present',
+  },
+  {
     slug:'ittige',name:'Ittige — Turning Mysuru’s plastic waste into bricks',tagline:'Proposed social enterprise concept: plastic packaging film + sand → pavers and solid blocks for non-structural uses.',category:'Social Entrepreneurship · Sustainability',year:'',image:ittigeImage,
     role:'Student team member · business concept & presentation contributor',duration:'Proposed concept — not launched',
     problem:'Low-value plastic packaging film in Mysuru is rarely recycled and ends up as waste. Ittige is a social and environmental mission: give that plastic a second life in a circular economy.',
