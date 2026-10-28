@@ -102,16 +102,15 @@ t2('IBM SkillsBuild credentials use the verified Credly links', () => {
   e2(ibm[1]!.verifyUrl).toBe('https://www.credly.com/badges/7379ecf4-57c7-4e23-bab5-532addb8f353')
   e2(JSON.stringify(d2.achievements)).not.toMatch(/AWS SBG/i)
 })
-t2('LinkedIn event entry stays concise: attendance only, no invented details', async () => {
+t2('LinkedIn event entry stays concise: participation only, no personal or company names', async () => {
   e2(d2.events).toHaveLength(1)
   const ev = d2.events[0]!
   e2(ev.title).toBe('Sales Connect on Tour — Mysore')
-  e2(ev.status).toBe('Attended')
-  e2(ev.association).toContain('LinkedIn event material')
-  e2(ev.association).toContain('Akshay S')
-  e2(JSON.stringify(ev)).not.toMatch(/202\d|speaker|organis|MCBI|bag|photo|booklet/i)
+  e2(ev.status).toBe('Participated')
+  e2(ev.association).toBe('Organized by LinkedIn')
+  e2(JSON.stringify(ev)).not.toMatch(/Akshay|Bluemind|202\d|speaker|organis|MCBI|bag|photo|booklet/i)
   const { buildJarvisPrompt } = await import('@/lib/jarvis-prompt')
   const prompt = buildJarvisPrompt()
-  e2(prompt).toContain("attended 'Sales Connect on Tour — Mysore'")
+  e2(prompt).toContain("participated in 'Sales Connect on Tour — Mysore'")
   e2(prompt).not.toMatch(/booklet|bag/i)
 })
