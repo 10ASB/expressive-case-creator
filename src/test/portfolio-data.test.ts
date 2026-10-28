@@ -53,3 +53,19 @@ t2('BE10X certificate uses supplied details without a credential ID', () => {
   e2(a.skills).toHaveLength(3)
   e2(JSON.stringify(a)).not.toMatch(/credential|verify/i)
 })
+t2('IBM SkillsBuild credentials use the verified Credly links', () => {
+  const ibm = d2.achievements.filter(a => a.issuer === 'IBM SkillsBuild')
+  e2(ibm).toHaveLength(2)
+  e2(ibm.map(a => a.title)).toEqual([
+    'Artificial Intelligence Fundamentals',
+    'SkillsBuild - Customer Engagement: Communication and Personality Dynamics',
+  ])
+  for (const a of ibm) {
+    e2(a.issued).toBe('2 January 2026')
+    e2(a.recipient).toBe('Akshay S Bharadwaj')
+    e2(a.verifyUrl).toMatch(/^https:\/\/www\.credly\.com\/badges\//)
+  }
+  e2(ibm[0]!.verifyUrl).toBe('https://www.credly.com/badges/d22fdd6f-e46f-4f10-a99e-0adc5b61f5ef')
+  e2(ibm[1]!.verifyUrl).toBe('https://www.credly.com/badges/7379ecf4-57c7-4e23-bab5-532addb8f353')
+  e2(JSON.stringify(d2.achievements)).not.toMatch(/AWS SBG/i)
+})

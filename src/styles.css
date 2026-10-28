@@ -694,4 +694,6 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .achievement-body ul {display:grid;gap:8px;margin-top:18px;}
 .achievement-body li {padding-left:18px;position:relative;color:var(--muted-foreground);}
 .achievement-body li::before {content:"▸";position:absolute;left:0;color:var(--primary);}
+.achievement-verify {display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-family:var(--font-mono,monospace);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--primary);border:1px solid color-mix(in oklab,var(--primary) 45%,transparent);padding:8px 14px;transition:background .2s,box-shadow .2s;}
+.achievement-verify:hover {background:color-mix(in oklab,var(--primary) 12%,transparent);box-shadow:0 0 18px color-mix(in oklab,var(--primary) 25%,transparent);}
 @media (max-width:640px){.achievements h2{font-size:36px;}.achievement-card{grid-template-columns:1fr;padding:22px;gap:16px;}.achievement-seal{width:56px;height:56px;font-size:22px;}.achievement-body h3{font-size:21px;}}
