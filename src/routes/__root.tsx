@@ -11,6 +11,7 @@ import {
 } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, type ReactNode } from "react";
 const CinematicFx = lazy(() => import("@/components/cinematic-fx"));
+import { WebGLGuard } from "@/components/webgl-guard";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -122,7 +123,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <PortfolioProvider><ClientOnly fallback={null}><Suspense fallback={null}><CinematicFx/></Suspense></ClientOnly><Header /><Outlet /><Footer /><Link to="/assistant" className="jarvis-launcher" aria-label="Open J.A.R.V.I.S. assistant"><span className="mini-reactor"/><span>J.A.R.V.I.S.</span><span className="signal-dot"/></Link></PortfolioProvider>
+      <PortfolioProvider><ClientOnly fallback={null}><WebGLGuard><Suspense fallback={null}><CinematicFx/></Suspense></WebGLGuard></ClientOnly><Header /><Outlet /><Footer /><Link to="/assistant" className="jarvis-launcher" aria-label="Open J.A.R.V.I.S. assistant"><span className="mini-reactor"/><span>J.A.R.V.I.S.</span><span className="signal-dot"/></Link></PortfolioProvider>
     </QueryClientProvider>
   );
 }
