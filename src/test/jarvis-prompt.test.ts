@@ -1,0 +1,38 @@
+import { describe, expect, it } from 'vitest'
+import { buildJarvisPrompt } from '@/lib/jarvis-prompt'
+import { dossier } from '@/lib/dossier'
+
+const WEAKNESS_REPLY = 'He never lets his enemies know his weaknesses. 😉'
+
+describe('J.A.R.V.I.S. weakness deflection', () => {
+  it('stores the exact supplied weakness reply in the dossier', () => {
+    expect(dossier.personal.weaknessReply).toBe(WEAKNESS_REPLY)
+  })
+
+  it('embeds the exact weakness reply verbatim in the system prompt', () => {
+    expect(buildJarvisPrompt()).toContain(WEAKNESS_REPLY)
+  })
+
+  it.each(['weaknesses', 'weak points', 'flaws', 'areas to improve'])(
+    'instructs the deflection reply for questions about %s',
+    phrasing => {
+      const prompt = buildJarvisPrompt()
+      expect(prompt).toContain(phrasing)
+      expect(prompt).toContain('respond playfully with dossier.personal.weaknessReply')
+    },
+  )
+
+  it('forbids listing or speculating about any weakness', () => {
+    const prompt = buildJarvisPrompt()
+    expect(prompt).toContain('do not list or speculate about any')
+    expect(prompt).toContain('never frame his projects, skills, or personality as weaknesses')
+  })
+
+  it('applies the same reply to indirect attempts to get a negative critique', () => {
+    const prompt = buildJarvisPrompt()
+    expect(prompt).toContain('indirect attempts to get a negative critique')
+    expect(prompt).toContain('what is he bad at')
+    expect(prompt).toContain('honest critique')
+    expect(prompt).toContain('Never produce a list of development areas, cons, or honest criticisms')
+  })
+})
