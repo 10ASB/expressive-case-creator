@@ -102,3 +102,16 @@ t2('IBM SkillsBuild credentials use the verified Credly links', () => {
   e2(ibm[1]!.verifyUrl).toBe('https://www.credly.com/badges/7379ecf4-57c7-4e23-bab5-532addb8f353')
   e2(JSON.stringify(d2.achievements)).not.toMatch(/AWS SBG/i)
 })
+t2('events entry records only the supported LinkedIn material facts', () => {
+  const ev = d2.events[0]!
+  e2(ev.name).toBe('Sales Connect on Tour Mysore')
+  const all = JSON.stringify(ev)
+  e2(all).toContain('LinkedIn-branded event booklet')
+  e2(all).toContain('Akshay S')
+  e2(all).toContain('Bluemind Solutions Private Limited')
+  e2(all).toContain('LinkedIn-branded bag')
+  e2(all).toMatch(/role and date are not established/i)
+  e2(all).not.toMatch(/attended|organized|organised|presented|speaker|hosted|20(2[0-9])|\b202[0-9]\b/)
+  e2(all).not.toMatch(/mysore city bus|MCBI|bus|Rapido/i)
+  e2(d2.events).toHaveLength(1)
+})
