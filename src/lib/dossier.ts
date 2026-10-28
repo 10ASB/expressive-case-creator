@@ -43,6 +43,26 @@ export const dossier = {
         'Code and debug using AI in under 10 minutes',
       ],
     },
+    {
+      title: 'Artificial Intelligence Fundamentals',
+      issuer: 'IBM SkillsBuild',
+      recipient: 'Akshay S Bharadwaj',
+      issued: '2 January 2026',
+      issuedIso: '2026-01-02',
+      note: 'Verified IBM SkillsBuild credential.',
+      skills: ['Artificial intelligence fundamentals'],
+      verifyUrl: 'https://www.credly.com/badges/d22fdd6f-e46f-4f10-a99e-0adc5b61f5ef',
+    },
+    {
+      title: 'SkillsBuild - Customer Engagement: Communication and Personality Dynamics',
+      issuer: 'IBM SkillsBuild',
+      recipient: 'Akshay S Bharadwaj',
+      issued: '2 January 2026',
+      issuedIso: '2026-01-02',
+      note: 'Verified IBM SkillsBuild credential.',
+      skills: ['Communication', 'Personality dynamics', 'Customer engagement'],
+      verifyUrl: 'https://www.credly.com/badges/7379ecf4-57c7-4e23-bab5-532addb8f353',
+    },
   ],
 }
 export const skillGroups = [
