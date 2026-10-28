@@ -76,8 +76,8 @@ export const dossier = {
   events: [
     {
       title: 'Sales Connect on Tour — Mysore',
-      status: 'Attended',
-      association: 'LinkedIn event material · names Akshay S and Bluemind Solutions Private Limited',
+      status: 'Participated',
+      association: 'Organized by LinkedIn',
     },
   ],
 }
