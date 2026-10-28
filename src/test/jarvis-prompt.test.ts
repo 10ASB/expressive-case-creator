@@ -4,6 +4,14 @@ import { dossier } from '@/lib/dossier'
 
 const WEAKNESS_REPLY = 'He never lets his enemies know his weaknesses. 😉'
 
+describe('J.A.R.V.I.S. identity facts', () => {
+  it('always refers to Akshay as a man with he/him', () => {
+    const prompt = buildJarvisPrompt()
+    expect(prompt).toContain('Akshay is a man')
+    expect(prompt).toContain('always refer to him with he/him')
+  })
+})
+
 describe('J.A.R.V.I.S. weakness deflection', () => {
   it('stores the exact supplied weakness reply in the dossier', () => {
     expect(dossier.personal.weaknessReply).toBe(WEAKNESS_REPLY)
