@@ -42,6 +42,10 @@ import { dossier as d2 } from '@/lib/dossier'
 import { test as t2, expect as e2 } from 'vitest'
 t2('first internship completed and available for next', () => {
   e2(d2.experience.status).toBe('Completed')
+  e2(d2.experience.company).toBe('Bluemind Solution Pvt. Ltd.')
+  e2(d2.experience.period).toBe('03 August 2026 — 28 August 2026')
+  e2(d2.experience.description).toContain('practical industry exposure')
+  e2(d2.experience.description).not.toMatch(/defect|vision|transfer learning|quality inspection|deep learning/i)
   e2(d2.availability).toMatch(/available for his next internship/)
   e2(d2.extracurriculars.creative).toContain('Singing')
 })
