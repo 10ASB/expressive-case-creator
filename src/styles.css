@@ -475,6 +475,22 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .dossier-layout {display:grid;grid-template-columns:1fr 1.2fr;gap:90px;margin-top:60px;}
 .dossier-layout h2 {font-size:25px;margin-top:20px;}
 .dossier-layout p {color:var(--muted-foreground);font-size:13px;line-height:1.9;margin-top:22px;}
+.featured-eyebrow {margin-top:64px;}
+.featured-internship {position:relative;display:grid;grid-template-columns:1.4fr .6fr;gap:10px 48px;align-items:center;margin-top:20px;padding:34px 40px;border:1px solid color-mix(in oklab, var(--character-detail) 45%, var(--border));background:linear-gradient(135deg, color-mix(in oklab, var(--character-detail) 12%, transparent), transparent 58%), var(--card);box-shadow:0 0 50px -20px color-mix(in oklab, var(--character-detail) 65%, transparent), inset 0 0 34px -26px color-mix(in oklab, var(--character-detail) 60%, transparent);}
+.featured-internship::before, .featured-internship::after {content:'';position:absolute;width:15px;height:15px;border-color:var(--character-detail);border-style:solid;}
+.featured-internship::before {top:-1px;left:-1px;border-width:2px 0 0 2px;}
+.featured-internship::after {bottom:-1px;right:-1px;border-width:0 2px 2px 0;}
+.featured-flag {display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:9px;letter-spacing:.24em;color:var(--character-detail);border:1px solid color-mix(in oklab, var(--character-detail) 55%, transparent);padding:6px 13px;}
+.featured-flag::before {content:'';width:6px;height:6px;border-radius:50%;background:var(--character-detail);animation:mark-pulse 2.2s ease-in-out infinite;}
+.featured-internship h2 {font-size:24px;margin-top:16px;}
+.featured-org {font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-foreground);margin-top:9px;}
+.featured-desc {color:var(--muted-foreground);font-size:13px;line-height:1.9;margin-top:15px;max-width:62ch;}
+.featured-meta {display:grid;gap:20px;justify-items:start;border-left:1px solid color-mix(in oklab, var(--character-detail) 35%, var(--border));padding-left:32px;font-family:var(--font-mono);}
+.featured-meta span {font-size:8px;letter-spacing:.24em;color:var(--character-detail);}
+.featured-meta p {font-size:11px;color:var(--muted-foreground);margin-top:5px;white-space:nowrap;}
+.featured-status {color:var(--foreground);}
+@media(max-width:760px){.featured-internship{grid-template-columns:1fr;gap:22px;padding:28px 24px;}.featured-meta{border-left:0;border-top:1px solid color-mix(in oklab, var(--character-detail) 35%, var(--border));padding:18px 0 0;flex-direction:row;}}
+@media(max-width:640px){.featured-internship{padding:24px 18px;gap:16px;margin-top:16px;}.featured-internship h2{font-size:19px;margin-top:12px;}.featured-desc{font-size:12px;}.featured-meta{display:flex;width:100%;justify-content:space-between;gap:16px;padding:14px 0 0;}.featured-meta p{font-size:10px;white-space:normal;}}
 .dossier-timeline {border-left:1px solid var(--border);padding-left:30px;}
 .dossier-timeline article {margin:24px 0 32px;position:relative;}
 .dossier-timeline article::before {content:'';position:absolute;left:-34px;top:4px;width:7px;height:7px;background:var(--primary);}
