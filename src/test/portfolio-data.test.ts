@@ -54,6 +54,10 @@ describe('Real portfolio content', () => {
     expect(all).toContain('ticket buying/booking')
     expect(all).toContain('developing the concept in 2024')
     expect(all).toContain('not proof of direct influence or implementation')
+    expect(all).toContain('retained physical event material')
+    expect(all).toContain('Sales Connect on Tour Mysore')
+    expect(all).toContain('LinkedIn-branded bag')
+    expect(all).toContain('do not serve as evidence')
     expect(JSON.stringify(portfolioProjects)).not.toMatch(/rapido/i)
   })
   it('composes a correctly encoded email draft to Akshay', () => {
