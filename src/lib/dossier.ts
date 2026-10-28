@@ -73,6 +73,18 @@ export const dossier = {
       verifyUrl: 'https://www.credly.com/badges/7379ecf4-57c7-4e23-bab5-532addb8f353',
     },
   ],
+  events: [
+    {
+      name: 'Sales Connect on Tour Mysore',
+      kicker: 'EVENT PARTICIPATION — MATERIAL RETAINED',
+      facts: [
+        'LinkedIn-branded event booklet',
+        'Booklet shows "Akshay S" and "Bluemind Solutions Private Limited"',
+        'A LinkedIn-branded bag is also retained',
+      ],
+      note: 'Recorded as neutral event material: the participation role and date are not established, and this item is not connected to any portfolio project.',
+    },
+  ],
 }
 export const skillGroups = [
   {tier:'01',name:'Core systems',level:'PRIMARY STACK', skills:['Python','C/C++','NumPy','Pandas'],power:5},
