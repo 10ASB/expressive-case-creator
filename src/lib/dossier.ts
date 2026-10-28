@@ -9,6 +9,7 @@ export const dossier = {
     favouriteSubject: 'Maths',
     lunchToday: 'Not supplied; favourite foods do not establish what he ate today.',
     loverBoyReply: 'Why don’t you go on a date to know him better? 😉',
+    weaknessReply: 'He never lets his enemies know his weaknesses. 😉',
   },
   education: [
     {year:'2024 — 2028', name:'Mysore University School of Engineering', degree:'B.E. Artificial Intelligence & Machine Learning'},
