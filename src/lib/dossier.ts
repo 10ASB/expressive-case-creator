@@ -15,7 +15,7 @@ export const dossier = {
     {year:'2024',name:'Sharada Vidya Mandir PU College',degree:'Pre-University Course'},
     {year:'2022',name:'DAV Public School',degree:'Secondary School Leaving Certificate'},
   ],
-  experience: {role:'Machine Learning Intern', company:'Bluemind Solution Pvt. Ltd.', period:'03 — 28 August 2026', location:'Mysuru', status:'Completed', description:'Worked on Machine Learning and Computer Vision, focusing on visual defect detection and image-based quality inspection using deep learning and transfer learning.'},
+  experience: {role:'Machine Learning Intern', company:'Bluemind Solution Pvt. Ltd.', period:'03 August 2026 — 28 August 2026', location:'Mysuru, Karnataka', status:'Completed', description:'Completed a four-week internship, gaining practical industry exposure and hands-on learning during the internship.'},
   availability: 'His first internship (Bluemind Solution, August 2026) is complete, and he is now available for his next internship opportunity.',
   extracurriculars: {
     workshops: ['AWS', 'LinkedIn', 'Be10X'],
