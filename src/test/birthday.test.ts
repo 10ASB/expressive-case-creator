@@ -31,6 +31,7 @@ describe('Mark 85 birthday protocol', () => {
       restore(original)
     }
   })
+  it('J.A.R.V.I.S. celebrates only on October 9 (India date)', () => {
     expect(buildJarvisPrompt(new Date('2026-10-09T06:00:00Z'))).toContain("TODAY IS OCTOBER 9")
     expect(buildJarvisPrompt(new Date('2026-10-30T06:00:00Z'))).not.toContain("TODAY IS OCTOBER 9")
     expect(buildJarvisPrompt(new Date('2026-10-30T06:00:00Z'))).toContain("birthday is October 9")
