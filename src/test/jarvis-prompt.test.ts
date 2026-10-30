@@ -68,3 +68,13 @@ describe('J.A.R.V.I.S. pursuit facts (Thor chapter)', () => {
     expect(prompt).not.toMatch(/ambassador[^.]*\b(selected|appointed|duties|responsibilities)\b/i)
   })
 })
+
+describe('J.A.R.V.I.S. internship ML lab knowledge', () => {
+  it('knows XGBoost/Optuna, PCA/clustering and keeps the delivery app caveat', () => {
+    const prompt = buildJarvisPrompt()
+    expect(prompt).toContain('XGBoost randomized search and Optuna')
+    expect(prompt).toContain('K-Means clustering, PCA and t-SNE')
+    expect(prompt).toContain('has not been run end-to-end')
+    expect(prompt).toContain('AI & ML Engineering • Multiverse Builder • Variant in Progress')
+  })
+})
