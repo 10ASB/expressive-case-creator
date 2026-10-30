@@ -723,3 +723,8 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 
 .reactor-telemetry.is-birthday strong{color:#FFD700;text-shadow:0 0 12px #FFD700,0 0 24px #ED1D24;}
 .reactor-telemetry.is-birthday{border-color:#ED1D24;}
+.flat-reactor{display:flex;align-items:center;justify-content:flex-end;padding-right:12%;pointer-events:none}
+.flat-reactor svg{width:min(26rem,40vw);animation:flat-reactor-spin 30s linear infinite;filter:drop-shadow(0 0 24px currentColor)}
+@keyframes flat-reactor-spin{to{transform:rotate(360deg)}}
+@media (max-width:640px){.flat-reactor{justify-content:center;padding:0;align-items:flex-end;padding-bottom:4rem}.flat-reactor svg{width:60vw;opacity:.5}}
+@media (prefers-reduced-motion:reduce){.flat-reactor svg{animation:none}}

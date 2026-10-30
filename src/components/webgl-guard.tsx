@@ -12,16 +12,17 @@ function canUseWebGL(): boolean {
   }
 }
 
-class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+class Boundary extends Component<{ children: ReactNode; fallback?: ReactNode }, { failed: boolean }> {
   override state = { failed: false }
   static getDerivedStateFromError() { return { failed: true } }
   override componentDidCatch(e: unknown) { console.warn('3D scene disabled:', e) }
-  override render() { return this.state.failed ? null : this.props.children }
+  override render() { return this.state.failed ? (this.props.fallback ?? null) : this.props.children }
 }
 
 /** Renders 3D children only when WebGL works; otherwise renders nothing instead of crashing the page. */
-export function WebGLGuard({ children }: { children: ReactNode }) {
-  const [ok, setOk] = useState(false)
+export function WebGLGuard({ children, fallback = null }: { children: ReactNode; fallback?: ReactNode }) {
+  const [ok, setOk] = useState<boolean | null>(null)
   useEffect(() => { setOk(canUseWebGL()) }, [])
-  return ok ? <Boundary>{children}</Boundary> : null
+  if (ok === null) return null
+  return ok ? <Boundary fallback={fallback}>{children}</Boundary> : <>{fallback}</>
 }
