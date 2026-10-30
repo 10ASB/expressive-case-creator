@@ -16,19 +16,19 @@ describe('Mark 85 birthday protocol', () => {
   it('preview override forces birthday mode via ?birthday=1 or ?preview=birthday', () => {
     const d = new Date(2026, 9, 30, 12) // a non-birthday date
     const original = window.location.href
-    const restore = (url: string) => window.history.replaceState(null, '', url)
+    const restore = (search: string) => window.history.replaceState(null, '', search)
     try {
-      restore('http://localhost:8080/?birthday=1')
+      restore('/?birthday=1')
       expect(isBirthday(d)).toBe(true)
       expect(reactorTelemetry(d).status).toBe('PROTOCOL: ASB-10 ENGAGED')
-      restore('http://localhost:8080/?preview=birthday')
+      restore('/?preview=birthday')
       expect(isBirthday(d)).toBe(true)
-      restore('http://localhost:8080/?other=param')
+      restore('/?other=param')
       expect(isBirthday(d)).toBe(false)
       expect(reactorTelemetry(d).status).toBe('CORE STABLE')
-      restore('http://localhost:8080/')
+      restore('/')
     } finally {
-      restore(original)
+      restore(new URL(original).search || '/')
     }
   })
   it('J.A.R.V.I.S. celebrates only on October 9 (India date)', () => {
