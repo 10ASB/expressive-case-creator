@@ -1,5 +1,15 @@
-/** Akshay's birthday: October 9 (month index 9). */
+/** Akshay's birthday: October 9 (month index 9).
+ *  Preview override: load the page with ?birthday=1 or ?preview=birthday to force
+ *  the Gold & Crimson mode on any date (no parameter = real calendar date). */
 export function isBirthday(date: Date = new Date()): boolean {
+  if (typeof window !== 'undefined' && !!window.location?.search) {
+    try {
+      const params = new URLSearchParams(window.location.search)
+      if (params.get('birthday') === '1' || params.get('preview') === 'birthday') return true
+    } catch {
+      // Ignore malformed URLs and fall back to the calendar date.
+    }
+  }
   return date.getMonth() === 9 && date.getDate() === 9
 }
 /** Birthday check on the India calendar date, used server-side for J.A.R.V.I.S. */
