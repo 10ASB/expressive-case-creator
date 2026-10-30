@@ -13,7 +13,24 @@ describe('Mark 85 birthday protocol', () => {
     expect(isBirthday(d)).toBe(false)
     expect(reactorTelemetry(d).status).toBe('CORE STABLE')
   })
-  it('J.A.R.V.I.S. celebrates only on October 9 (India date)', () => {
+  it('preview override forces birthday mode via ?birthday=1 or ?preview=birthday', () => {
+    const d = new Date(2026, 9, 30, 12) // a non-birthday date
+    const original = window.location.href
+    const restore = (url: string) => window.history.replaceState(null, '', url)
+    try {
+      restore('http://localhost:8080/?birthday=1')
+      expect(isBirthday(d)).toBe(true)
+      expect(reactorTelemetry(d).status).toBe('PROTOCOL: ASB-10 ENGAGED')
+      restore('http://localhost:8080/?preview=birthday')
+      expect(isBirthday(d)).toBe(true)
+      restore('http://localhost:8080/?other=param')
+      expect(isBirthday(d)).toBe(false)
+      expect(reactorTelemetry(d).status).toBe('CORE STABLE')
+      restore('http://localhost:8080/')
+    } finally {
+      restore(original)
+    }
+  })
     expect(buildJarvisPrompt(new Date('2026-10-09T06:00:00Z'))).toContain("TODAY IS OCTOBER 9")
     expect(buildJarvisPrompt(new Date('2026-10-30T06:00:00Z'))).not.toContain("TODAY IS OCTOBER 9")
     expect(buildJarvisPrompt(new Date('2026-10-30T06:00:00Z'))).toContain("birthday is October 9")
