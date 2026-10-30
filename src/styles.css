@@ -721,3 +721,5 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .event-entry p {font-size:11px;color:var(--muted-foreground);margin-top:4px;}
 @media (max-width:640px){.event-entry{flex-direction:column;gap:8px;padding:12px;}}
 
+.reactor-telemetry.is-birthday strong{color:#FFD700;text-shadow:0 0 12px #FFD700,0 0 24px #ED1D24;}
+.reactor-telemetry.is-birthday{border-color:#ED1D24;}

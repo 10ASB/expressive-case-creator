@@ -1,9 +1,10 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Lightformer } from '@react-three/drei'
 import { useRef, useState, useEffect, useMemo } from 'react'
+import { birthdayPalette, isBirthday } from '@/lib/birthday'
 import { AdditiveBlending, Group, MeshStandardMaterial, Path, Shape, Vector3 } from 'three'
 
-type Palette = { metal: string; cyan: string; lime: string }
+type Palette = { metal: string; cyan: string; lime: string; boost?: number }
 function triangle(radius: number) {
   const shape = new Shape()
   shape.moveTo(-radius * .866, radius * .5)
@@ -13,7 +14,8 @@ function triangle(radius: number) {
   return shape
 }
 function Sculpture({ palette, paused }: { palette: Palette; paused: boolean }) {
-  const g = 1
+  const g = palette.boost ?? 1
+  const pulse = palette.boost ? 5 : 2
   const group = useRef<Group>(null)
   const rotor = useRef<Group>(null)
   const coreMaterial = useRef<MeshStandardMaterial>(null)
@@ -37,7 +39,7 @@ function Sculpture({ palette, paused }: { palette: Palette; paused: boolean }) {
     target.set(mobile ? 0 : 2.7, mobile ? -.95 : .15, 0)
     group.current.position.lerp(target, 1 - Math.exp(-4 * dt))
     group.current.scale.setScalar(mobile ? .48 : .94)
-    if (coreMaterial.current) coreMaterial.current.emissiveIntensity = g * (2.2 + Math.sin(elapsed.current * 2) * .35)
+    if (coreMaterial.current) coreMaterial.current.emissiveIntensity = g * (2.2 + Math.sin(elapsed.current * pulse) * (palette.boost ? .9 : .35))
     if (paused) return
     elapsed.current += dt
     rotor.current.rotation.z -= dt * .35
@@ -75,7 +77,7 @@ export default function FutureScene() {
   const [palette, setPalette] = useState<Palette>()
   const [paused, setPaused] = useState(false)
   useEffect(() => {
-    setPalette({metal:tokenColor('--scene-metal'),cyan:tokenColor('--primary'),lime:tokenColor('--scene-highlight')})
+    setPalette(isBirthday() ? {metal:tokenColor('--scene-metal'),cyan:birthdayPalette.core,lime:birthdayPalette.accent,boost:birthdayPalette.boost} : {metal:tokenColor('--scene-metal'),cyan:tokenColor('--primary'),lime:tokenColor('--scene-highlight')})
     const query = matchMedia('(prefers-reduced-motion: reduce)'); setPaused(query.matches)
     const change = () => setPaused(query.matches); query.addEventListener('change',change)
     return () => query.removeEventListener('change',change)
